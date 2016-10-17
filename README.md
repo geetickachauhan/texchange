@@ -1,13 +1,20 @@
-# Texchange
+# MEAN Stack Single Page Application Starter
 
-This is an open source website which allows users to buy and sell textbooks. This project is currently being built for CEN 4010, a Software Engineering course offered by Florida International University. 
+This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
 
-## Project summary
-Texchange, will allow university students to buy and sell used textbooks. Users will be able to look up the textbook by its title or author, see various prices available from different sellers, and purchase the one they desire. Conversely, they will also be able to list their own book for sale so other users can purchase it. There will be three overall levels of user groups:
+## Installation
+1. Download the repository
+2. Install npm modules: `npm install`
+3. Install bower dependencies `bower install`
+4. Start up the server: `node server.js`
+5. View in browser at http://localhost:8080
 
- - The first group will be known as Guests, which will be able to visit the website and browse through all the listings of books being sold.
+Use this starter kit to build any MEAN stack application you like.
 
-- Registered Users will be the second group, which will be able to browse like a Guest, but are also able to purchase/sell books and have a public profile as well as report other users. They will have to have to verify their email before they can use any of the privileges offered to Registered Users.
+If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
 
-- Finally, Administrators will be able to remove listings, users, and feature listings. Additionally, they will be able to ban users who receive too many reports.
-
+## Future Additions
+- CRUD examples
+- Development and Production Environments
+- Link examples
+- Single Page AngularJS Animations
