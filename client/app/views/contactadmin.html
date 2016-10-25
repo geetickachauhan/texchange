@@ -1,1 +1,22 @@
-<p>This is the contactAdmin view.</p>
+<h1> Contact the Admin </h1>
+<p> Type of message
+<select name="ContactAdmin">
+  <option value="Unban">Request to Unban</option>
+  <option value="Report">Report a User</option>
+</select>
+<form>
+    Subject <input type="text">
+    Message <input type="text">
+    <input type="submit" id="contactAdminButton">
+</form>
+
+<!-- WORK ON SCIPTS HERE -->
+<script>
+
+  var myBtn = document.getElementById('contactAdminButton');
+  console.log(myBtn);
+  myBtn.addEventListener('click', function(){
+    window.alert('Your Message has been sent successfully');
+  })
+
+</script>
