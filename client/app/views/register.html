@@ -1,1 +1,26 @@
-<p>This is the register view.</p>
+<h1>Sign Up for an Account</h1>
+
+<form name = "SignUpForm">
+    First Name <input type="text">
+    Last Name <input type="text">
+    Email <input type="text">
+    Display Name <input type="text">
+    Password<input type="password">
+    Date of Birth <p><form name = "DateOfBirthForm">
+      Day<input type="text">
+      Month<input type="text">
+      Year<input type = "text">
+    <input type="submit" id="contactAdminButton" value="Submit">
+</form>
+
+<script>
+
+  var myBtn = document.getElementById('contactAdminButton');
+  console.log(myBtn);
+  myBtn.addEventListener('click', function(){
+    window.alert("Please verify your email by clicking 'OK'");
+
+  })
+  </script>
+<!-- has invalid information as well as preexisting email as exceptions -->
+<!-- what to do about "System displays a message asking the user to  verify email"-->
