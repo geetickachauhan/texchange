@@ -1,26 +1,65 @@
-<h1>Sign Up for an Account</h1>
+<!-- WORK ON STYLES HERE -->
+<style>
 
-<form name = "SignUpForm">
-    First Name <input type="text">
-    Last Name <input type="text">
-    Email <input type="text">
-    Display Name <input type="text">
-    Password<input type="password">
-    Date of Birth <form name = "DateOfBirthForm">
-      Day<input type="text">
-      Month<input type="text">
-      Year<input type = "text">
-    <input type="submit" id="contactAdminButton" value="Submit">
+.login-wrapper{
+  background: #eaeaea;
+  border-radius: 6px;
+  min-height: 400px;
+  margin-bottom: 30px;
+  padding: 10%;
+}
+.date{
+  width: 80px;
+  display: inline-block;
+}
+input{
+  display: block;
+}
+</style>
+
+<div class="login-wrapper">
+<form>
+  <h2>Create a Texchange Account</h2>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Last Name</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Last name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Display Name</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <p>Date of Birth: <select id="disabledSelect" class="date form-control"><option>Day</option></select><select id="disabledSelect" class="date form-control"><option>Month</option></select><select id="disabledSelect" class="date form-control"><option>Year</option></select>
+  </p>
+  <br>
+  <button class="subscribe btn btn-success btn-lg btn-block" type="button">Sign Up</button>
 </form>
+</div>
 
+<!--
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, tellus sed sodales elementum, dui eros scelerisque magna, at congue elit risus eget magna. Phasellus in diam a orci tempor viverra vel a tellus. Proin lectus arcu, suscipit nec blandit non, mollis non quam. Fusce viverra et enim vitae maximus.
+</p>
+-->
+
+<!-- WORK ON SCIPTS HERE -->
 <script>
 
-  var myBtn = document.getElementById('contactAdminButton');
+  var myBtn = document.getElementById('loginButton');
   console.log(myBtn);
   myBtn.addEventListener('click', function(){
-    window.alert("Please verify your email by clicking 'OK'");
-
+    window.alert('ERROR!');
   })
-  </script>
-<!-- has invalid information as well as preexisting email as exceptions -->
-<!-- what to do about "System displays a message asking the user to  verify email"-->
+
+</script>
