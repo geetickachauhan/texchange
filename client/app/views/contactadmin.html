@@ -1,14 +1,45 @@
+<style>
+
+.contact-wrapper{
+  background: #eaeaea;
+    height: 500px;
+    border-radius: 6px;
+    display: table;
+    width: 100%;
+    margin: 30px;
+}
+.contact-content{
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10%;
+}
+
+</style>
+
 <h1> Contact the Admin </h1>
- Type of message
-<select name="ContactAdmin">
-  <option value="Unban">Request to Unban</option>
-  <option value="Report">Report a User</option>
-</select>
-<form name = "ContactAdminForm">
-    Subject <input type="text">
-    Message <input type="text">
-    <input type="submit" id="contactAdminButton" value ="Submit">
-</form>
+<div class="contact-wrapper">
+  <div class="contact-content">
+    Type of message
+    <select name="ContactAdmin" style="margin-left: 27px;">
+      <option value="Unban">Request to Unban</option>
+      <option value="Report">Report a User</option>
+    </select>
+    <br>
+    <br>
+    <form name = "ContactAdminForm">
+        Subject <input style="margin-left: 57px;" type="text">
+        <br>
+        <br>
+        <div class="form-group">
+  <label for="comment">Message:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
+
+</div>
+ 
 
 <!-- Need to figure out how to display exception if they leave field blank -->
 <!-- WORK ON SCIPTS HERE -->

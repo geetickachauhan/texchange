@@ -1,0 +1,22 @@
+.trans{
+  &-wrapper{
+    background: #eaeaea;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+  }
+  &-image{
+    height: 50%;
+    background-size: cover;
+    background-position: center center;
+  }
+  &-content{
+    padding: 5%;
+  }
+  &-item{
+    height: 300px;
+    background: white;
+    border: 1px solid #dadada;
+    margin: 10px auto;
+  }
+}

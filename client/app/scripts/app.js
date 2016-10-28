@@ -89,6 +89,11 @@ angular
         controller: 'PaymentCtrl',
         controllerAs: 'payment'
       })
+      .when('/listbook', {
+        templateUrl: 'views/listbook.html',
+        controller: 'ListbookCtrl',
+        controllerAs: 'listbook'
+      })
       .otherwise({
         redirectTo: '/'
       });

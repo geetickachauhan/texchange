@@ -1,0 +1,28 @@
+.book{
+  &-image{
+    background-size: cover;
+    background-position: center center;
+    height: 200px;
+  }
+  &-price{
+    font-size: 2em;
+  }
+  &-content{
+    padding: 15px;
+    h3{
+      margin-top: 0;
+    }
+  }
+  &-wrapper{
+    max-height: 400px;
+    background: #e2e2e2;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover{
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.5);
+      transform: translateY(-10px);
+    }
+  }
+}

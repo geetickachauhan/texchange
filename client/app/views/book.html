@@ -1,68 +1,103 @@
 <style>
 
-test {
-  margin: auto;
-  font-family: "Century Gothic";
-  font-weight: 400;
-  font-size: 2em;
-  /*
-  Testing with gradients
-
-  background: -webkit-linear-gradient(#0700f6, #00d7f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
+.detail-book-wrapper{
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
-tab {
-  padding-left: 4em;
+.detail-book-image img{
+  width: 165px;
 }
 
-bookCoverAndDate {
-  font-family: "Century Gothic";
-  font-weight: normal;
-  font-size: 25px;
-}
-
-bookTitle {
-  font-weight: bold;
-  font-size: 32px;
-}
-
-div.fullPage{
-  font-family: "Century Gothic";
-}
-
-div.polaroid {
-  float: left;
-  width: 231px;
-  height: 346px;
-  background-color: white;
-}
-
-div.totalBookInfo {
-  text-align: center;
-  font-weight: normal;
-  font-size: 25px;
-}
-
-div.shoppingInfo {
-  border: 4px solid #DEDEDE;
-  border-radius: 5px;
-  float: right;
+.detail-book-button-wrapper{
   width: 250px;
-  height: 400px;
-  background-color: white;
+  display: table;
 }
-
-div.bookDescription {
-  text-align: left;
-  margin-left: 300px;
-  margin-right: 300px;
+.detail-book-button-wrapper span{
+  font-size: 1.5em;
+  display: table-cell;
+  vertical-align: middle;
+  margin-right: 25px;
 }
+.detail-book-info-title{
+  display: block;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #cac8c8;
+  margin-bottom: 15px;
+  color: #6b6a6a;
+  font-size: 1.5em;
 
+}
+.detail-book-info-items{
+  margin-bottom: 3px;
+}
 </style>
 
-<div class="fullPage">
+
+<div class="detail-book-wrapper">
+
+  <div class="row">
+
+  <div class="col-md-3">
+
+    <div class="detail-book-image">
+      <img src="images/booktest.jpg">
+      <p>ISBN: <a href="#">123-543-1234</a></p>
+
+    </div>
+
+  </div>
+  <div class="col-md-9">
+    <div class="detail-book-content">
+      <h2>Book Title <small>(Hardcover)</small></h2>
+      <p><span>Author: <b>Firstname Lastname</b></span></p>
+
+      <div class="detail-book-info">
+        <span class="detail-book-info-title">Book Details</span>
+      </div>
+      <div class="detail-book-info-wrapper">
+        <p class="detail-book-info-items"><span>Sold by: <a href="#">Username</a></span></p>
+        <p class="detail-book-info-items"><span>Pages: <b>475</b></span>
+        <p class="detail-book-info-items"><span>Edition number: <b>4</b></span>
+        <p class="detail-book-info-items"><span>Genre: <b>Science</b></span>
+        <p class="detail-book-info-items"><span>Condition: <b>New</b></span>
+      </div>
+
+      <div class="detail-book-button-wrapper">
+        <span>US$175.00</span>
+        <button type="button" class="btn btn-primary detail-book-button">Add to Cart</button>  
+      </div>
+
+      
+      
+
+
+     
+      
+    </div>
+
+  </div>
+
+</div>
+<div class="detail-book-desc">
+
+<h2>About the book</h2>
+<hr>
+
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+
+</div>
+
+
+<!-- <div class="fullPage">
   <div class="polaroid">
     <img src="../images/booktest.jpg" alt="Book Test" style="width:100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
   </div>
@@ -88,4 +123,4 @@ div.bookDescription {
     Genre: .......<br>
     Book Condition: .......<br>
   </p>
-</div>
+</div> -->

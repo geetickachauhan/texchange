@@ -22,8 +22,9 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+        <div class="container nav">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                    <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
@@ -32,28 +33,32 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">Textchange</a>
+            <a class="navbar-brand" href="#/">Texchange</a>
           </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
+          <input type="text" class="form-control" placeholder="Search for books">
             <ul class="nav navbar-nav">
-              <li><a ng-href="#/book">Book</a></li>
-              <li><a ng-href="#/searchResults">Search</a></li>
+  
               <li><a ng-href="#/transactions">Transactions</a></li>
+              <li><a ng-href="#/transactions">Profile</a></li>
+              <li><a ng-href="#/transactions">Shopping Cart</a></li>
+              <li><a ng-href="#/transactions">Sign out</a></li>
             </ul>
+          
+          
+
           </div>
+
         </div>
       </div>
     </div>
     <div class="container">
-      <h1>BEGIN VIEW</h1>
     <div ng-view=""></div>
     </div>
-  <h1>END VIEW</h1>
     <div class="footer">
       <div class="container">
         <p>Created for CEN 4013</p>
+        <p>&copy; Copyright 2016 </p>
+        <p><a href="#/contactAdmin"style="color: white; border-bottom: 1px solid white;">Contact an Admin</a></p>
       </div>
     </div>
 
@@ -98,6 +103,8 @@
         <script src="scripts/controllers/forgotpassword.js"></script>
         <script src="scripts/controllers/shoppingcart.js"></script>
         <script src="scripts/controllers/payment.js"></script>
+        <script src="scripts/controllers/mynewcontroller.js"></script>
+        <script src="scripts/controllers/listbook.js"></script>
         <!-- endbuild -->
 </body>
 </html>
