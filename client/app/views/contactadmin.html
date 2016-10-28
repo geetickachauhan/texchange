@@ -1,1 +1,51 @@
-<p>This is the contactAdmin view.</p>
+<h1> Contact the Admin </h1>
+ Type of message
+<select name="ContactAdmin">
+  <option value="Unban">Request to Unban</option>
+  <option value="Report">Report a User</option>
+</select>
+<form name = "ContactAdminForm">
+    Subject <input type="text">
+    Message <input type="text">
+    <input type="submit" id="contactAdminButton" value ="Submit">
+</form>
+
+<!-- Need to figure out how to display exception if they leave field blank -->
+<!-- WORK ON SCIPTS HERE -->
+<script>
+
+  var myBtn = document.getElementById('contactAdminButton');
+  console.log(myBtn);
+  myBtn.addEventListener('click', function(){
+    window.alert('Thank you. Your Message has been sent successfully');
+
+  })
+
+/*
+  function preventDefault()
+  {
+    var empt = document.forms["ContactAdminFrom"].value;
+    if (empt.value.length == 0)
+     {
+        window.alert("Please enter values in all fields");
+        return false;
+     }
+     return true;
+  }
+  */
+
+/*
+  function required()
+   {
+     var empt = document.forms["ContactAdminFrom"].value;
+     if (empt.value.length == 0)
+      {
+         window.alert("Please enter values in all fields");
+         return false;
+      }
+      window.alert('Thank you. Your Message has been sent successfully');
+      return true;
+    }
+    */
+
+</script>
