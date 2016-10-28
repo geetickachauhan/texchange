@@ -28,13 +28,17 @@ header{
     padding-bottom: 25px;
 }
 .nav{
-  height: 90px;
+  padding: 1%;
+}
+a.navbar-brand {
+    font-size: 3em;
+    font-weight: 100;
 }
 .container-narrow > hr {
   margin: 30px 0;
 }
 .navbar-nav{
-  float: right;
+  padding-bottom: 30px;
 }
 .navbar-default .navbar-nav > li > a{
   color: white !important;

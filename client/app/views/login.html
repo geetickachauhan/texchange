@@ -1,29 +1,34 @@
 <!-- WORK ON STYLES HERE -->
 <style>
 
-form{
-  background-color: lightblue;
-  padding: 15px;
-  border: 1px solid black;
+.login-wrapper{
+  background: #eaeaea;
   border-radius: 6px;
-  text-align: center;
+  min-height: 400px;
+  margin-bottom: 30px;
+  padding: 10%;
 }
-h2{
-  text-align: center;
-  padding: 15px;
+input{
+  display: block;
 }
-
 </style>
 
-
-<h2>Login to Texchange</h2>
-
-<!-- WORK ON COMPONENTS HERE -->
+<div class="login-wrapper">
 <form>
-  Name <input type="text">
-  Password <input type="password">
-  <input type="submit" value="Login" id="loginButton">
+  <h2>Log in to Texchange Account</h2>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  
+  <a href="#/" class="btn btn-primary" id="btn">Log in</a>   
 </form>
+</div>
+
 <!--
 <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, tellus sed sodales elementum, dui eros scelerisque magna, at congue elit risus eget magna. Phasellus in diam a orci tempor viverra vel a tellus. Proin lectus arcu, suscipit nec blandit non, mollis non quam. Fusce viverra et enim vitae maximus.
