@@ -1,44 +1,28 @@
 <style>
-	
-h2{
-	text-align: center;
-	padding: 15px;
+.cart-wrapper{
+  background: #eaeaea;
+  border-radius: 6px;
+  min-height: 400px;
+  margin-bottom: 30px;
+  padding: 10%;
 }
-
-img{
+.cart-img{
+	width: 200px;
 	float: left;
-	height: 200px;
-	width: 150px;
+	margin-right: 60px;
 }
-p{
-	float: center;
-	text-indent: 25px;
+.cart-list{
+	list-style-type: none;
 }
-#Quantity{
-	text-indent: 25px;
-	padding-left: 25px;
+.cart-list li{
+	font-size: 1.5em;
 }
-#DeleteButton{
-	float: center;
-	margin-left: 25px;
-	display: inline;
+.cart-item{
+	height: 300px;
 }
-#SETextbook{
-	margin-left: 50px;
+hr{
+	border-top: 1px solid black;
 }
-#Price{
-	display: inline;
-	float: right;
-	margin-right: 250px;
-}
-form{
-	background-color: lightblue;
-	padding: 15px;
-	padding-bottom: 30px;
- 	border: 1px solid black;
-  	border-radius: 6px;
-}
-
 </style>
 
 
@@ -46,45 +30,44 @@ form{
 
 
 <h2>Shopping Cart</h2>
-
-<form>
-	<img 
-		id = "SETextbook"
-		src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg" 
-		alt="Object Oriented Software Engineering"
-		scale = .5>
-	<p id = "Name" style = "font-size: 22; font-style: bold; margin-bottom: 0px;" ></p>
-	<p id = "Author" style = "font-size: 13; margin-top: 0px;"></p>
-	<p id = "ISBN_13" style = "">ISBN 13: </p>
-	<p id = "Quantity" style = "">Quantity: </p>
-	<p id = "Price" style = "color: green; font-size: 20;">$ </p>
-	<br/>
-	<input type="submit" value = "Remove" id="DeleteButton">
-</form>
-
-
-<p>
-	I can just repeat this 2 more times with other books for a screenshot, but this page will have to be changed a lot once we connect a database.
-</p>
-
-
-
-<script>
-	var Name = document.getElementById("Name");
-	var Author = document.getElementById("Author");
-	var ISBN_13 = document.getElementById("ISBN_13");
-	var Quantity = document.getElementById("Quantity");
-	var Price = document.getElementById("Price");
-
-
-
-	window.onload = function(){
-		Name.innerHTML = "Object Oriented Software Engineering: Using UML patterns, and Java";
-		Author.innerHTML = "Allen H. Dutoit";
-		ISBN_13.innerHTML += "978-0136061250";
-		Quantity.innerHTML += "1";
-		Price.innerHTML += "159.12";
-	}
-
-
-</script>
+<div class="cart-wrapper">
+	<div class="cart-item">
+		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
+		<ul class="cart-list">
+			<li id = "Name" ></li>
+			<li id = "Author"></li>
+			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
+			<li id = "Quantity">Quantity: <b>1</b></li>
+			<li id = "Price">Price: <b>USD $65.12 </b></li>
+			<br/>
+			<button type="submit" class="btn btn-primary" id="btn">Remove</button>  
+		</ul>
+	</div>
+	<div class="cart-item">
+		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
+		<ul class="cart-list">
+			<li id = "Name" ></li>
+			<li id = "Author"></li>
+			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
+			<li id = "Quantity">Quantity: <b>1</b></li>
+			<li id = "Price">Price: <b>USD $65.12 </b></li>
+			<br/>
+			<button type="submit" class="btn btn-primary" id="btn">Remove</button>  
+		</ul>
+	</div>
+	<div class="cart-item">
+		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
+		<ul class="cart-list">
+			<li id = "Name" ></li>
+			<li id = "Author"></li>
+			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
+			<li id = "Quantity">Quantity: <b>1</b></li>
+			<li id = "Price">Price: <b>USD $65.12 </b></li>
+			<br/>
+			<button type="submit" class="btn btn-primary" id="btn">Remove</button>  
+		</ul>
+	</div>
+	<hr>
+	<h3>Total: $195.36</h3>
+	<a href="#/payment" class="btn btn-primary" id="btn">Checkout Items</a>   
+</div>

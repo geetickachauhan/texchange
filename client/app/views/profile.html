@@ -1,23 +1,61 @@
-<h1> Profile Information </h1>
- First Name: ABC
- Last Name: CHA
- Display Name: CHJSdnja
- Date of Birth: 949594
- Email: gchdhdh@gmail.com
- Password: ....
+<style>
 
-<input type="submit" id="editProfileButton" value="Edit">
-  <script>
+.profile-wrapper{
+  background: #eaeaea;
+  border-radius: 6px;
+  min-height: 400px;
+  margin-bottom: 30px;
+  padding: 10%;
+}
+.profile-header{
+  text-align: center;
+}
+.date{
+  width: 80px;
+  display: inline-block;
+}
+</style>
 
-    var myBtn = document.getElementById('editProfileButton');
-    console.log(myBtn);
-    myBtn.addEventListener('click', function(){
-      window.alert("Thank you. You can now edit your profile information.");
+<h1 class="header">Profile Information</h1>
+<hr>
 
-    })
-    </script>
+<div class="profile-wrapper">
 
-  <!-- what to do about the case where basically there needs to be an edit
-  button which takes you to a form to update password-->
+  <div class="row">
+    <div class="col-sm-12 profile-header">
+      <h2>Martin Di Diego</h2>
+      <hr style="border-top: 1px solid #a0a0a0;">
+    </div>
+    <div class="col-sm-12">
+      <div id="notEdit">
+        <h4>Account Information</h4>
+        <p>First Name: <b>Martin</b></p>
+        <p>Last Name: <b>Di Diego</b></p>
+        <p>Display Name: <b>@martindidiego</b></p>
+        <p>Email: <b>didiegomartin@gmail.com</b></p>
+        <p>Date of Birth: <b>June 4th, 1995</b></p>
+        <br>
+      </div>
+       <div id="edit" style="display: none;">
+        <h4>Account Information</h4>
+        <p>First Name: <input type="text"></p>
+        <p>Last Name: <input type="text"></p>
+        <p>Display Name: <input type="text"></p>
+        <p>Email: <input type="text"></p>
+        <p>Date of Birth: <select id="disabledSelect" class="date form-control"><option>Day</option></select><select id="disabledSelect" class="date form-control"><option>Month</option></select><select id="disabledSelect" class="date form-control"><option>Year</option></select>
+        <br>
+      </div>
+      <button type="submit" class="btn btn-primary" id="btn">Edit information</button>   
+    </div>
+  </div> 
+</div>
 
-  <!-- has Verify Email and Invalid Information (related to adding password etc) -->
+<script>
+
+var btn = document.getElementById('btn');
+btn.addEventListener('click', function(){
+  document.getElementById('notEdit').style.display = "none";
+  document.getElementById('edit').style.display = "block";
+})
+
+</script>
