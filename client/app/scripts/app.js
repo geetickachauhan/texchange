@@ -193,7 +193,7 @@
   })
   .factory('User', function(UserRestangular) {
     return UserRestangular.service('user');
-  });
+  })
   .factory('User', function(UserRestangular) {
     return UserRestangular.service('user');
   })
