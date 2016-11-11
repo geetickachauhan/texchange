@@ -1,65 +1,121 @@
 <!-- WORK ON STYLES HERE -->
 <style>
 
-.login-wrapper{
-  background: #eaeaea;
-  border-radius: 6px;
-  min-height: 400px;
-  margin-bottom: 30px;
-  padding: 10%;
-}
-.date{
-  width: 80px;
-  display: inline-block;
-}
-input{
-  display: block;
-}
+  .login-wrapper{
+    background: #eaeaea;
+    border-radius: 6px;
+    min-height: 400px;
+    margin-bottom: 30px;
+    padding: 10%;
+  }
+  .date{
+    width: 80px;
+    display: inline-block;
+  }
+  input{
+    display: block;
+  }
 </style>
 
 <div class="login-wrapper">
-<form>
-  <h2>Create a Texchange Account</h2>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">First Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Last Name</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Last name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Display Name</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <p>Date of Birth: <select id="disabledSelect" class="date form-control"><option>Day</option></select><select id="disabledSelect" class="date form-control"><option>Month</option></select><select id="disabledSelect" class="date form-control"><option>Year</option></select>
-  </p>
-  <br>
-  <button class="subscribe btn btn-success btn-lg btn-block" type="button">Sign Up</button>
-</form>
+  <form name="registerForm" novalidate="">
+    <h2>Create a Texchange Account</h2>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text" class="form-control" placeholder="Email" ng-model="user.email" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">First Name</label>
+      <input type="text" class="form-control" placeholder="First name" ng-model="user.first_name" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Last Name</label>
+      <input type="text" class="form-control" placeholder="Last name" ng-model="user.last_name" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Display Name</label>
+      <input type="text" class="form-control" placeholder="Username" ng-model="user.username" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+    </div>
+    <p>Date of Birth: 
+      <select id="disabledSelect" class="date form-control" ng-model="birthday.day" required>
+        <option value="" disabled selected>Day</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+        <option>27</option>
+        <option>28</option>
+        <option>29</option>
+        <option>30</option>
+        <option>31</option>
+      </select>
+      <select id="disabledSelect" class="date form-control" ng-model="birthday.month" required>
+        <option value="" disabled selected>Month</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+      <select id="disabledSelect" class="date form-control" ng-model="birthday.year" required>
+        <option value="" disabled selected>Year</option>
+        <option>1980</option>
+        <option>1981</option>
+        <option>1982</option>
+        <option>1983</option>
+        <option>1984</option>
+        <option>1985</option>
+        <option>1986</option>
+        <option>1987</option>
+        <option>1988</option>
+        <option>1989</option>
+        <option>1990</option>
+        <option>1991</option>
+        <option>1992</option>
+        <option>1993</option>
+        <option>1994</option>
+        <option>1995</option>
+        <option>1996</option>
+        <option>1997</option>
+        <option>1998</option>
+        <option>1999</option>
+        <option>2000</option>
+      </select>
+    </p>
+    <br>
+    <button class="subscribe btn btn-success btn-lg btn-block" type="button" ng-click="registerUser()" ng-disabled="registerForm.$invalid">Sign Up</button>
+  </form>
 </div>
-
-<!--
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, tellus sed sodales elementum, dui eros scelerisque magna, at congue elit risus eget magna. Phasellus in diam a orci tempor viverra vel a tellus. Proin lectus arcu, suscipit nec blandit non, mollis non quam. Fusce viverra et enim vitae maximus.
-</p>
--->
-
-<!-- WORK ON SCIPTS HERE -->
-<script>
-
-  var myBtn = document.getElementById('loginButton');
-  console.log(myBtn);
-  myBtn.addEventListener('click', function(){
-    window.alert('ERROR!');
-  })
-
-</script>
