@@ -20,23 +20,24 @@
 <div class="contact-wrapper">
   <div class="contact-content">
     <h1> Contact the Admin </h1>
-    Type of message
-    <select name="ContactAdmin" style="margin-left: 27px;" ng-model="contactAdmin.type" required>
-      <option value="" disabled selected>Type of Message</option>
-      <option value="Unban">Request to Unban</option>
-      <option value="Report">Report a User</option>
-    </select>
-    <br>
-    <br>
+
     <form name = "ContactAdminForm" novalidate="">
-        Subject <input style="margin-left: 57px;" type="text" ng-model="contactAdmin.subject" required>
+      Type of message
+      <select name="ContactAdmin" style="margin-left: 27px;" ng-model="contactAdminObj.type" required>
+      <option value="" disabled selected>Type of Message</option>
+        <option value="Unban">Request to Unban</option>
+        <option value="Report">Report a User</option>
+      </select>
+      <br>
+      <br>
+        Subject <input style="margin-left: 57px;" type="text" ng-model="contactAdminObj.subject" required>
         <br>
         <br>
         <div class="form-group">
   <label for="comment">Message:</label>
-  <textarea class="form-control" rows="5" id="comment" ng-model="contactAdmin.message" required></textarea>
+  <textarea class="form-control" rows="5" id="comment" ng-model="contactAdminObj.message" required></textarea>
 </div>
-        <button type="submit" class="btn btn-primary" ng-disabled="contactAdminForm.$invalid" ng-click="contactAdmin()">Send Message</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="ContactAdminForm.$invalid" ng-click="contactAdminFn()">Send Message</button>
     </form>
 </div>
 
@@ -45,6 +46,7 @@
 
 <!-- Need to figure out how to display exception if they leave field blank -->
 <!-- WORK ON SCIPTS HERE -->
+<!--
 <script>
 
   var myBtn = document.getElementById('contactAdminButton');
@@ -53,6 +55,7 @@
     window.alert('Thank you. Your Message has been sent successfully');
 
   })
+
 
 /*
   function preventDefault()
@@ -82,3 +85,4 @@
     */
 
 </script>
+-->
