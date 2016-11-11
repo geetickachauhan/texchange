@@ -10,7 +10,7 @@
 angular.module('clientApp')
   .controller('MoviesCtrl', function ($scope, Movie) {
 
-  	console.log('In movies controller')
+  	console.log('In movies controller');
   	$scope.list = Movie.getList().$object;
     
   });

@@ -17,33 +17,17 @@ input{
 <form>
   <h2>Log in to Texchange Account</h2>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    <label for="exampleInputEmail1">Display Name</label>
+    <input type="text" class="form-control" placeholder="Display Name" ng-model="loginUser.username">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" placeholder="Password" ng-model="loginUser.password">
   </div>
   <a href="#/forgotPassword" style="display: block;">Forgot Password?</a>
   <a href="#/register" style="display: block;">Don't have an Account?</a>
   <br>
-  <a href="#/" class="btn btn-primary" id="btn">Log in</a>   
+  <a href="#/" class="btn btn-primary" id="btn" ng-click="loginAttempt()">Log in</a>   
 </form>
 </div>
 
-<!--
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices, tellus sed sodales elementum, dui eros scelerisque magna, at congue elit risus eget magna. Phasellus in diam a orci tempor viverra vel a tellus. Proin lectus arcu, suscipit nec blandit non, mollis non quam. Fusce viverra et enim vitae maximus.
-</p>
--->
-
-<!-- WORK ON SCIPTS HERE -->
-<script>
-
-  var myBtn = document.getElementById('loginButton');
-  console.log(myBtn);
-  myBtn.addEventListener('click', function(){
-    window.alert('ERROR!');
-  })
-
-</script>

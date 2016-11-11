@@ -33,7 +33,7 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/movies', {
+      .when('/Users', {
         templateUrl: 'views/movies.html',
         controller: 'MoviesCtrl',
         controllerAs: 'movies'
@@ -136,4 +136,14 @@ angular
     })
     .factory('Movie', function(MovieRestangular) {
       return MovieRestangular.service('movie');
+    })
+    .factory('UserRestangular', function(Restangular) {
+        return Restangular.withConfig(function(RestangularConfigurer) {
+          RestangularConfigurer.setRestangularFields({
+            id: '_id'
+          });
+        });
+      })
+    .factory('User', function(UserRestangular) {
+      return UserRestangular.service('user');
     });
