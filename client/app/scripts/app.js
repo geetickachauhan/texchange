@@ -51,6 +51,7 @@ angular
       $scope.signOut = function(){
         console.log("Logging out user...")
         $rootScope.user.status = false;
+        $rootScope.user = 'undefined'
         console.log($rootScope.user)
         $location.path('/login')
       }

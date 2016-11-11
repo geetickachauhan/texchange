@@ -43,6 +43,23 @@
         <p>Display Name: <input type="text" ng-model="user.username"></p>
         <p>Email: <input type="text" ng-model="user.email"></p>
         <p>Date of Birth:
+
+            <select id="disabledSelect" class="date form-control" ng-model="birthday.month" required>
+              <option value="" disabled selected>Month</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+        
           <select id="disabledSelect" class="date form-control" ng-model="birthday.day" required>
             <option value="" disabled selected>Day</option>
             <option>1</option>
@@ -77,21 +94,7 @@
             <option>30</option>
             <option>31</option>
           </select>
-          <select id="disabledSelect" class="date form-control" ng-model="birthday.month" required>
-            <option value="" disabled selected>Month</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-          </select>
+         
           <select id="disabledSelect" class="date form-control" ng-model="birthday.year" required>
             <option value="" disabled selected>Year</option>
             <option>1980</option>
