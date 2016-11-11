@@ -1,4 +1,4 @@
-var restful = require('node-restful');
+var restful = require('node-restful'); 
 module.exports = function(app, route) {
 
   // Setup the controller for REST.

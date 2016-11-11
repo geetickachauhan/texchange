@@ -24,15 +24,26 @@ app.use(function(req, res, next) {
 mongoose.connect('mongodb://localhost/meanapp');
 mongoose.connection.once('open', function() {
 
-  // Load the models.
+  // Load all system models
   app.models = require('./models/index');
 
-  // Load the routes.
+  // Load the routes
   var routes = require('./routes');
+
+  // Iterate over all routes and assign respective controller
   _.each(routes, function(controller, route) {
     app.use(route, controller(app, route));
   });
 
   console.log('Listening on port 3000...');
   app.listen(3000);
+
+  var book = mongoose.model('book', app.models.book.BookSchema)
+
+  book.findOne({title: 'Introduction to Sociology'})
+      .populate('seller')
+      .exec(function(err, book){
+        console.log(book);
+      })
+
 });

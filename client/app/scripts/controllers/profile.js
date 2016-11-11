@@ -9,9 +9,7 @@
  */
 angular.module('clientApp')
   .controller('ProfileCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
+  	console.log('In Profile Controller');
+
   });

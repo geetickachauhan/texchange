@@ -9,9 +9,7 @@
  */
 angular.module('clientApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
+    console.log('In Main controller');
+
   });
