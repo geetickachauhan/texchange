@@ -8,10 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('SearchresultsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('SearchresultsCtrl', function ($scope, Book) {
+    Book.one('title', 'CoolBook').get().then(function(book){
+      console.log(book)
+    })
   });

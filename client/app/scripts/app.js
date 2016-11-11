@@ -146,4 +146,15 @@ angular
       })
     .factory('User', function(UserRestangular) {
       return UserRestangular.service('user');
-    });
+    })
+    .factory('BookRestangular', function(Restangular) {
+        return Restangular.withConfig(function(RestangularConfigurer) {
+          RestangularConfigurer.setRestangularFields({
+            id: '_id'
+          });
+        });
+      })
+      .factory('Book', function(BookRestangular) {
+        return BookRestangular.service('book');
+      })
+    ;
