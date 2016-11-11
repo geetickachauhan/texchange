@@ -8,6 +8,8 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('SearchresultsCtrl', function ($scope) {
-
+  .controller('SearchresultsCtrl', function ($scope, Book) {
+    Book.one('title', 'CoolBook').get().then(function(book){
+      console.log(book)
+    })
   });

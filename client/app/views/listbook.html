@@ -17,50 +17,57 @@ input{
 </style>
 
 <div class="sell-wrapper">
-<form>
+<form name="listBookForm" novalidate="">
+
   <h2>List a Book For Sale</h2>
   <div class="form-group">
     <label for="exampleInputEmail1">Textbook Title</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Title">
+    <input type="text" class="form-control"  placeholder="Title" ng-model="book.title" required>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Author</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Author">
+    <input type="text" class="form-control"  placeholder="Author" ng-model="book.author" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">ISBN</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="123-4564-1245">
+    <input type="text" class="form-control"  placeholder="123-4564-1245" ng-model="book.isbn" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Language</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ex: English, Farsi, Russian">
+    <input type="text" class="form-control"  placeholder="Ex: English, Farsi, Russian" ng-model="book.language" required>
   </div>
    <div class="form-group">
     <label for="exampleInputPassword1">Edition Number</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ex: 9th Edition">
+    <input type="text" class="form-control"  placeholder="Ex: 9" ng-model="book.edition" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Number of Pages</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Number of Pages">
+    <input type="text" class="form-control"  placeholder="Number of Pages" ng-model="book.num_pages" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Price </label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="$">
+    <input type="text" class="form-control"  placeholder="$" ng-model="book.price" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Book Condition</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ex: New, Slightly Used, Used">
+    <input type="text" class="form-control"  placeholder="Ex: New, Good, Poor" ng-model="book.condition" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Type of Bookcover</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ex: Hardcover, Softcover">
+    <select class="form-control" ng-model="book.cover_type" required>
+      <option value="" disabled selected>Type of Book Cover</option>
+      <option>Hardcover</option>
+      <option>Paperbound</option>
+      <option>Loose-Leaf</option>
+    </select>
+
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Genre</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ex: Science, Math, English">
+    <input type="text" class="form-control"  placeholder="Ex: Science, Math, English" ng-model="book.genre" required>
   </div>
-  
+
   <br>
-    <a class="subscribe btn btn-success btn-lg btn-block" href="#/">Sell Textbook</a>
+    <button class="subscribe btn btn-success btn-lg btn-block" ng-disabled="listBookForm.$invalid" ng-click="listBook()">Sell Textbook</button>
 </form>
 </div>
