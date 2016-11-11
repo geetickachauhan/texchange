@@ -16,8 +16,45 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'restangular'
+    'restangular',
+    'angularModalService'
   ])
+  .controller('appCtrl', function ($rootScope, $scope, $location, ModalService) {
+      console.log('In AppCtrl');
+
+      $scope.showErrorMessage = function(errormsg, btn, cb) {
+
+
+         // Just provide a template url, a controller and call 'showModal'.
+         ModalService.showModal({
+           templateUrl: "views/modal/popup.html",
+           controller: function($scope, $location, $rootScope){
+            $scope.error = errormsg;
+            btn ? $scope.btn = btn : $scope.btn = "Okay";
+            $scope.close = function(){
+             if(cb){cb()}
+             close(false);
+             $('.modal-backdrop').css('opacity', 0);
+             $('.modal-backdrop').css('display', 'none');
+            }
+           }
+         }).then(function(modal) {
+           // The modal object has the element built, if this is a bootstrap modal
+           // you can call 'modal' to show it, if it's a custom modal just show or hide
+           // it as you need to.
+           modal.element.modal();
+
+         });
+
+       };
+
+      $scope.signOut = function(){
+        console.log("Logging out user...")
+        $rootScope.user.status = false;
+        console.log($rootScope.user)
+        $location.path('/login')
+      }
+  })
   .config(function ($routeProvider, RestangularProvider) {
 
     RestangularProvider.setBaseUrl('http://localhost:3000');
@@ -123,10 +160,17 @@ angular
         controller: 'MovieEditCtrl',
         controllerAs: 'movieEdit'
       })
+      .when('/signOut', {
+        templateUrl: 'views/signout.html',
+        controller: 'SignoutCtrl',
+        controllerAs: 'signOut'
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
+
+  // MOVIE ENDPOINTS
   .factory('MovieRestangular', function(Restangular) {
       return Restangular.withConfig(function(RestangularConfigurer) {
         RestangularConfigurer.setRestangularFields({
@@ -134,16 +178,18 @@ angular
         });
       });
     })
-    .factory('Movie', function(MovieRestangular) {
-      return MovieRestangular.service('movie');
-    })
-    .factory('UserRestangular', function(Restangular) {
-        return Restangular.withConfig(function(RestangularConfigurer) {
-          RestangularConfigurer.setRestangularFields({
-            id: '_id'
-          });
+  .factory('Movie', function(MovieRestangular) {
+    return MovieRestangular.service('movie');
+  })
+
+  // USER ENDPOINTS
+  .factory('UserRestangular', function(Restangular) {
+      return Restangular.withConfig(function(RestangularConfigurer) {
+        RestangularConfigurer.setRestangularFields({
+          id: '_id'
         });
-      })
-    .factory('User', function(UserRestangular) {
-      return UserRestangular.service('user');
-    });
+      });
+    })
+  .factory('User', function(UserRestangular) {
+    return UserRestangular.service('user');
+  });

@@ -1,5 +1,6 @@
 <div class="jumbotron">
-  <h1>Welcome to texchange!</h1>
+  <h1 ng-if="user.status">Welcome to texchange, {{user.first_name}}!</h1>
+  <h1 ng-if="!user.status || user.status === undefined"">Welcome to texchange!</h1>
   <p class="lead">
     Find the best textbooks at the best prices
   </p>

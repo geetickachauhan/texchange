@@ -8,11 +8,12 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('MainCtrl', function ($scope, User) {
+  .controller('MainCtrl', function ($scope, User, $rootScope) {
     
     console.log('In Main controller');
 
-    // Get User info on view load
-    // $scope.user = User.one($routeParams.id).get().$object
+    $scope.user = $rootScope.user;
+    console.log('Logged in as ', $scope.user);
+
 
   });

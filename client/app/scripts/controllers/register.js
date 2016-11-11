@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('RegisterCtrl', function ($scope, User, $location) {
+  .controller('RegisterCtrl', function ($scope, User, $location, $rootScope) {
     
   	$scope.user = {
   		isBanned: false,
@@ -27,6 +27,8 @@ angular.module('clientApp')
   		console.log('Registering:', $scope.user);
 
   		User.post($scope.user).then(function(res){
+        $rootScope.user = res;
+        $rootScope.user.status = true;
   			$location.path('/');
   		})
   	}

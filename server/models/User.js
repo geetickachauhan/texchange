@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 // Create the UserSchema.
 var UserSchema = new mongoose.Schema({
@@ -20,7 +21,8 @@ var UserSchema = new mongoose.Schema({
   },
   username:{
   	type: String,
-  	required: true
+  	required: true,
+    unique: true
   },
   password:{
   	type: String,
@@ -37,5 +39,6 @@ var UserSchema = new mongoose.Schema({
   }
 });
 
+UserSchema.plugin(uniqueValidator);
 // Export the model schema.
 module.exports = UserSchema;
