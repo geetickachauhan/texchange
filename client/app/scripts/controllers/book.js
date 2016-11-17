@@ -8,10 +8,20 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('BookCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('BookCtrl', function ($scope, $rootScope, $routeParams, Book, User) {
+
+    // Get Book data
+  	Book.getBook($routeParams.id).then(function(book){
+  		$scope.book = book.data;
+  	})
+
+  	$scope.addBookToCart = function(){
+  		var cart = $rootScope.user.cart;
+  		cart.push($scope.book._id)
+  		console.log('New cart', cart)
+  		User.updateCart($rootScope.user._id, cart).then(function(res){
+  			console.log(res)
+  		})
+  	}
+  	
   });

@@ -25,49 +25,20 @@ hr{
 }
 </style>
 
-
-
-
-
 <h2>Shopping Cart</h2>
 <div class="cart-wrapper">
-	<div class="cart-item">
+	<div class="cart-item" ng-repeat="book in cart">
 		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
 		<ul class="cart-list">
-			<li id = "Name" ></li>
-			<li id = "Author"></li>
-			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
-			<li id = "Quantity">Quantity: <b>1</b></li>
-			<li id = "Price">Price: <b>USD $65.12 </b></li>
+			<li>{{book.title}}</li>
+			<li>Author: <b>{{book.author}}</b>
+			<li>Price: <b>${{book.price}}</b></li>
+			<li>Condition: <b>{{book.condition}}</b></li>
 			<br/>
-			<button type="submit" class="btn btn-primary" id="btn">Remove</button>
+			<button type="submit" class="btn btn-danger" ng-click="removeFromCart($index)">Remove From Cart</button>
 		</ul>
 	</div>
-	<div class="cart-item">
-		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
-		<ul class="cart-list">
-			<li id = "Name" ></li>
-			<li id = "Author"></li>
-			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
-			<li id = "Quantity">Quantity: <b>1</b></li>
-			<li id = "Price">Price: <b>USD $65.12 </b></li>
-			<br/>
-			<button type="submit" class="btn btn-primary" id="btn">Remove</button>
-		</ul>
-	</div>
-	<div class="cart-item">
-		<img id = "SETextbook" src="https://images-na.ssl-images-amazon.com/images/I/51jNe4y1%2B-L._SX362_BO1,204,203,200_.jpg"  alt="Object Oriented Software Engineering" class="cart-img">
-		<ul class="cart-list">
-			<li id = "Name" ></li>
-			<li id = "Author"></li>
-			<li id = "ISBN_13">ISBN 13: <b>123-567-21134</b></li>
-			<li id = "Quantity">Quantity: <b>1</b></li>
-			<li id = "Price">Price: <b>USD $65.12 </b></li>
-			<br/>
-			<button type="submit" class="btn btn-primary" id="btn">Remove</button>
-		</ul>
-	</div>
-	<hr>
+	
 	<h3>Total: $195.36</h3>
 	<a href="#/payment" class="btn btn-primary" id="btn">Checkout Items</a>
 </div>

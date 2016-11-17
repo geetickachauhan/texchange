@@ -1,56 +1,47 @@
-<style>
+<div class="book-detail-wrapper">
 
-.detail-book-wrapper{
-  margin-top: 10%;
-  margin-bottom: 10%;
-}
+  <!-- Book Image -->
+  <div class="col-md-3 col-sm-12 book-image-wrapper">
+    <img class="book-detail-image" src="images/booktest.jpg">
+    <p>ISBN: <b>{{book.isbn}}</b></p>
+  </div>
+  <!-- Book Details -->
+  <div class="col-md-9 col-sm-12">
+    <div class="book-detail-content">
+      <h2>{{book.title}} <small>({{book.cover_type}})</small></h2>
+        <p><span>Author: <b>{{book.author}}</b></span></p>
+      <h3>Book Details</h3>
+      <hr class="book-detail-divider">
+      <p class=""><span>Sold by: <a ng-href="#/profile-view/{{book.seller._id}}">{{book.seller.username}}</a></span></p>
+      <p class=""><span>Pages: <b>{{book.num_pages}}</b></span>
+      <p class=""><span>Edition number: <b>{{book.edition}}</b></span>
+      <p class=""><span>Genre: <b>{{book.edition}}</b></span>
+      <p class=""><span>Condition: <b>{{book.condition}}</b></span> 
+      <br>
+      <button ng-if="user.status" type="button" class="btn btn-primary btn-block" ng-click="addBookToCart()">Add to Cart</button>  
+    </div>
+  </div>
+</div>
 
-.detail-book-image img{
-  width: 165px;
-}
 
-.detail-book-button-wrapper{
-  width: 250px;
-  display: table;
-}
-.detail-book-button-wrapper span{
-  font-size: 1.5em;
-  display: table-cell;
-  vertical-align: middle;
-  margin-right: 25px;
-}
-.detail-book-info-title{
-  display: block;
-  padding-bottom: 3px;
-  border-bottom: 2px solid #cac8c8;
-  margin-bottom: 15px;
-  color: #6b6a6a;
-  font-size: 1.5em;
-
-}
-.detail-book-info-items{
-  margin-bottom: 3px;
-}
-</style>
-
+<!-- 
 
 <div class="detail-book-wrapper">
-
   <div class="row">
 
   <div class="col-md-3">
 
     <div class="detail-book-image">
       <img src="images/booktest.jpg">
-      <p>ISBN: <a href="#">123-543-1234</a></p>
+      <p>ISBN: <a href="#">{{book.isbn}}</a></p>
 
     </div>
 
   </div>
   <div class="col-md-9">
     <div class="detail-book-content">
-      <h2>Book Title <small>(Hardcover)</small></h2>
-      <p><span>Author: <b>Firstname Lastname</b></span></p>
+      <h2>{{book.title}} <small>({{book.cover_type}})</small></h2>
+      <p><span>Author: <b>{{book.author}}</b></span></p>
 
       <div class="detail-book-info">
         <span class="detail-book-info-title">Book Details</span>
@@ -66,14 +57,7 @@
       <div class="detail-book-button-wrapper">
         <span>US$175.00</span>
         <button type="button" class="btn btn-primary detail-book-button">Add to Cart</button>  
-      </div>
-
-      
-      
-
-
-     
-      
+      </div>      
     </div>
 
   </div>
@@ -97,7 +81,7 @@
 </div>
 
 
-<!-- <div class="fullPage">
+<div class="fullPage">
   <div class="polaroid">
     <img src="../images/booktest.jpg" alt="Book Test" style="width:100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
   </div>

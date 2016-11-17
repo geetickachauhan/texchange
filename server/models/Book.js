@@ -44,7 +44,8 @@ var BookSchema = new mongoose.Schema({
   },
   seller: {
     type: String,
-    ref: 'user'
+    ref: 'user',
+    required: true
   },
   buyer: {
     type: String,

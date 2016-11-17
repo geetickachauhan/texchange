@@ -36,7 +36,8 @@ var UserSchema = new mongoose.Schema({
   isBanned:{
   	type: Boolean,
   	required: true
-  }
+  },
+  cart: [String]
 });
 
 UserSchema.plugin(uniqueValidator);

@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
- angular
- .module('clientApp', [
+ angular.module('clientApp', [
   'ngAnimate',
   'ngCookies',
   'ngResource',
@@ -18,45 +17,43 @@
   'ngTouch',
   'restangular',
   'angularModalService'
-  ])
- .controller('appCtrl', function ($rootScope, $scope, $location, ModalService) {
-  console.log('In AppCtrl');
+  ]).controller('appCtrl', function ($rootScope, $scope, $location, ModalService) {
+    console.log('In AppCtrl');
 
-  $scope.showErrorMessage = function(errormsg, btn, cb) {
+    $scope.showErrorMessage = function(errormsg, btn, cb) {
 
 
-         // Just provide a template url, a controller and call 'showModal'.
-         ModalService.showModal({
-           templateUrl: "views/modal/popup.html",
-           controller: function($scope, $location, $rootScope){
-            $scope.error = errormsg;
-            btn ? $scope.btn = btn : $scope.btn = "Okay";
-            $scope.close = function(){
-             if(cb){cb()}
-               close(false);
-             $('.modal-backdrop').css('opacity', 0);
-             $('.modal-backdrop').css('display', 'none');
+           // Just provide a template url, a controller and call 'showModal'.
+           ModalService.showModal({
+             templateUrl: "views/modal/popup.html",
+             controller: function($scope, $location, $rootScope, User){
+              $scope.error = errormsg;
+              btn ? $scope.btn = btn : $scope.btn = "Okay";
+              $scope.close = function(){
+               if(cb){cb()}
+                 close(false);
+               $('.modal-backdrop').css('opacity', 0);
+               $('.modal-backdrop').css('display', 'none');
+             }
            }
-         }
-       }).then(function(modal) {
-           // The modal object has the element built, if this is a bootstrap modal
-           // you can call 'modal' to show it, if it's a custom modal just show or hide
-           // it as you need to.
-           modal.element.modal();
+         }).then(function(modal) {
+             // The modal object has the element built, if this is a bootstrap modal
+             // you can call 'modal' to show it, if it's a custom modal just show or hide
+             // it as you need to.
+             modal.element.modal();
 
-         });
+           });
 
-     };
+       };
 
-     $scope.signOut = function(){
-      console.log("Logging out user...")
-      $rootScope.user.status = false;
-      $rootScope.user = 'undefined'
-      console.log($rootScope.user)
-      $location.path('/login')
-    }
-  })
- .config(function ($routeProvider, RestangularProvider) {
+   $scope.signOut = function(){
+    console.log("Logging out user...")
+    $rootScope.user.status = false;
+    $rootScope.user = undefined
+    console.log($rootScope.user)
+    $location.path('/login')
+  }
+}).config(function ($routeProvider, RestangularProvider) {
 
   RestangularProvider.setBaseUrl('http://localhost:3000');
 
@@ -82,6 +79,11 @@
     controllerAs: 'transactions'
   })
   .when('/book', {
+    templateUrl: 'views/book.html',
+    controller: 'BookCtrl',
+    controllerAs: 'book'
+  })
+  .when('/book/:id', {
     templateUrl: 'views/book.html',
     controller: 'BookCtrl',
     controllerAs: 'book'
@@ -166,44 +168,136 @@
     controller: 'SignoutCtrl',
     controllerAs: 'signOut'
   })
+  .when('/profile-view/:id', {
+    templateUrl: 'views/profile-view.html',
+    controller: 'ProfileViewCtrl',
+    controllerAs: 'profileView'
+  })
   .otherwise({
     redirectTo: '/'
   });
 })
+// USER ENDPOINTS
+.factory('User',function($rootScope, $http){
+  return {
+    login: function(loginParams){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/user/?username='+loginParams.username+'&password='+loginParams.password
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
 
-  // MOVIE ENDPOINTS
-  .factory('MovieRestangular', function(Restangular) {
-    return Restangular.withConfig(function(RestangularConfigurer) {
-      RestangularConfigurer.setRestangularFields({
-        id: '_id'
+    get: function(userId){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/user/'+userId
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
       });
-    });
-  })
-  .factory('Movie', function(MovieRestangular) {
-    return MovieRestangular.service('movie');
-  })
+    },
 
-  // USER ENDPOINTS
-  .factory('UserRestangular', function(Restangular) {
-    return Restangular.withConfig(function(RestangularConfigurer) {
-      RestangularConfigurer.setRestangularFields({
-        id: '_id'
+    update: function(user){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+user._id,
+        data: user
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
       });
-    });
-  })
-  .factory('User', function(UserRestangular) {
-    return UserRestangular.service('user');
-  })
-  .factory('User', function(UserRestangular) {
-    return UserRestangular.service('user');
-  })
-  .factory('BookRestangular', function(Restangular) {
-    return Restangular.withConfig(function(RestangularConfigurer) {
-      RestangularConfigurer.setRestangularFields({
-        id: '_id'
+    },
+
+    remove: function(userId){
+      return $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/user/'+userId
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
       });
-    });
-  })
-  .factory('Book', function(BookRestangular) {
-    return BookRestangular.service('book');
-  });
+    },
+
+    create: function(user){
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/user/',
+        data: user
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    updateCart: function(userId, newCart){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+userId,
+        data: {cart: newCart}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    }
+
+  }
+})
+
+// BOOK ENDPOINTS
+.factory('Book', function($http) {
+  return {
+    getBooksOfUser: function(userId){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/user/?seller='+userId
+      }).then(function successCallback(response) {
+
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    getBook: function(bookId){
+      return  $http({
+        method: 'GET',
+        url: 'http://localhost:3000/book/'+bookId
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    getBooks: function(){
+      return  $http({
+        method: 'GET',
+        url: 'http://localhost:3000/book/'
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    addBook: function(bookParams){
+      return  $http({
+        method: 'POST',
+        url: 'http://localhost:3000/book/',
+        data: bookParams
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    }
+  }
+});

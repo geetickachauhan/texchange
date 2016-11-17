@@ -26,11 +26,10 @@ angular.module('clientApp')
   		$scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
   		console.log('Registering:', $scope.user);
 
-  		User.post($scope.user).then(function(res){
-        $rootScope.user = res;
+      User.create($scope.user).then(function(res){
+        $rootScope.user = res.data;
         $rootScope.user.status = true;
-  			$location.path('/');
-  		})
+        $location.path('/');  
+      })
   	}
-
   });

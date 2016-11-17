@@ -8,8 +8,14 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ListbookCtrl', function ($scope, Book) {
+  .controller('ListbookCtrl', function ($scope, $rootScope, $location, Book) {
     console.log('In listbook ctrl');
+
+    if(typeof $rootScope.user === 'undefined'){
+      console.log('Not logged in, redirecting to login');
+      $location.path('/login');
+    }
+
     $scope.book = {}
 
 
@@ -31,7 +37,7 @@ angular.module('clientApp')
         window.alert("ISBN must be a 13 digit field");
         return;
       }
-      if(/[^a-zA-Z]/.test($scope.book.author)) // test if there is something that's not an alphabet
+      if(/[^a-zA-Z(* )]/.test($scope.book.author)) // test if there is something that's not an alphabet
       {
         window.alert("Author must be alphabetic");
         return;
@@ -92,12 +98,13 @@ angular.module('clientApp')
         return;
       }
 
-  		console.log('Registering:', $scope.book);
+      $scope.book.seller = $rootScope.user._id
 
-
-  		Book.post($scope.book).then(function(res){
-  			console.log(res);
-  		})
+      console.log('Registering:', $scope.book);
+      Book.addBook($scope.book).then(function(res){
+        console.log(res);
+        $location.path('/book/'+res.data._id);
+      })
     }
 
   });
