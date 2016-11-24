@@ -20,7 +20,26 @@ angular.module('clientApp')
         $location.path('/')
       }); 
 
-      var file = new File([""], "contactAdmin.txt", {type: "text/plain;charset=utf-8"});
+  /* var fs = require("fs");
+      var data = $scope.contactAdminObj.type + '\n' + $scope.contactAdminObj.subject + '\n' + $scope.contactAdminObj.message;
+
+      console.log("Going to write into existing file");
+      fs.writeFile('contactAdmin.txt', data,  function(err) {
+          if (err) {
+            return console.error(err);
+            }
+
+      console.log("Data written successfully!");
+      console.log("Let's read newly written data");
+      fs.readFile('input.txt', function (err, data) {
+      if (err) {
+         return console.error(err);
+      }
+      console.log("Asynchronous read: " + data.toString());
+   });
+
+});*/
+      //var file = new File([""], "contactAdmin.txt", {type: "text/plain;charset=utf-8"});
       //file.open("contactAdmin.txt");
       /*
       var fs = require("contactAdmin");

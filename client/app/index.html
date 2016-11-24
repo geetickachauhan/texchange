@@ -35,16 +35,16 @@
 
                 <a class="navbar-brand" href="#/">Texchange</a>
               </div>
-              
+
               <ul class="nav navbar-nav">
-                
+
                 <li><a ng-if="user.status === true" ng-href="#/transactions">Transactions</a></li>
                 <li><a ng-if="user.status === true" ng-href="#/profile">Profile</a></li>
                 <li><a ng-if="user.status === true" ng-href="#/shoppingCart">Shopping Cart</a></li>
                 <li><a ng-if="user.status === false || user.status === undefined" ng-href="#/login">Login</a></li>
                 <li><a ng-if="user.status === true" ng-click="signOut()">Sign Out</a></li>
               </ul>
-              
+
               <input type="text" class="form-control" placeholder="Search for books">
 
             </div>
@@ -90,6 +90,8 @@
      <script src="bower_components/restangular/dist/restangular.js"></script>
      <!-- endbower -->
      <!-- endbuild -->
+     <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+
      <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
 
      <!-- build:js({.tmp,app}) scripts/scripts.js -->
