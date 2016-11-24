@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var _ = require('lodash');
+var fs = require('fs');
+var messageCounter = 1;
 
 // Create the application.
 var app = express();
@@ -29,12 +31,6 @@ mongoose.connection.once('open', function() {
   // Load all system models
   app.models = require('./models/index');
 
-  // Write to file
-  app.use('/sendAdminMessage', function (req, res, next) {
-    console.log('Request', req);
-    next()
-  })
-
   // Load the routes
   var routes = require('./routes');
 
@@ -42,6 +38,26 @@ mongoose.connection.once('open', function() {
   _.each(routes, function(controller, route) {
     app.use(route, controller(app, route));
   });
+
+  //Send admin message / Write to file
+  app.use('/sendAdminMessage', function (req, res, next) {
+    
+    // Create file
+    var stream = fs.createWriteStream("adminMessages/"+(messageCounter++)+".txt");
+    stream.once('open', function(fd) {
+
+      // Write into file
+      stream.write("======== ADMIN MESSAGE =======\n\n");
+      stream.write("Type: " +req.query.type + "\n");
+      stream.write("Subject: " +req.query.subject + "\n\n");
+      stream.write("Message: " +req.query.message + "\n");
+
+      // Close the file stream
+      stream.end();
+    });
+
+    next()
+  })
 
   console.log('Listening on port 3000...');
   app.listen(3000);

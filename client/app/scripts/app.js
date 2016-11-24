@@ -306,10 +306,9 @@
 .factory('Admin', function($http) {
   return {
     sendAdminMessage: function(message){
-      console.log(message)
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/sendAdminMessage',
+        url: 'http://localhost:3000/sendAdminMessage/?message='+message.message+'&type='+message.type+'&subject='+message.subject,
         data: message
       }).then(function successCallback(response) {
 

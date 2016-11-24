@@ -1,0 +1,6 @@
+======== ADMIN MESSAGE =======
+
+Type: Report
+Subject: Wow this is cool
+
+Message: My awesome message!

@@ -1,0 +1,6 @@
+======== ADMIN MESSAGE =======
+
+Type: Unban
+Subject: Super coll subject
+
+Message: Super colle message

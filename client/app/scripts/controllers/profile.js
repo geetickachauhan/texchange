@@ -32,6 +32,7 @@
 
 		// Save edited user
 		$scope.saveUser = function() {
+
 			$scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
 			console.log('Edited User Info: ', $scope.user);
 			

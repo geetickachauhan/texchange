@@ -16,6 +16,17 @@ angular.module('clientApp')
     };
 
     $scope.loginAttempt = function(){
+
+      // Validate here
+      $scope.showErrorMessage('Message', "Okay", function(){
+        
+        // Once user clicks Okay button
+        
+        return;
+
+      }); 
+
+      // Logs in to DB  
       User.login($scope.loginUser).then(function(res){
         if(res.data.length > 0){
           $rootScope.user = res.data[0];
@@ -26,5 +37,6 @@ angular.module('clientApp')
           $scope.showErrorMessage('User not found with the provided credentials. Please try again.');
         }
       })
+
     }
   });
