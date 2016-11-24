@@ -23,66 +23,22 @@
 
     <form name = "ContactAdminForm" novalidate="">
       Type of message
-      <select name="ContactAdmin" style="margin-left: 27px;" ng-model="contactAdminObj.type" required>
-      <option value="" disabled selected>Type of Message</option>
+      <select name="ContactAdmin" style="margin-left: 27px;" ng-model="message.type" required>
+        <option value="" disabled selected>Type of Message</option>
         <option value="Unban">Request to Unban</option>
         <option value="Report">Report a User</option>
       </select>
       <br>
       <br>
-        Subject <input style="margin-left: 57px;" type="text" ng-model="contactAdminObj.subject" required>
+        Subject <input style="margin-left: 57px;" type="text" ng-model="message.subject" required>
         <br>
         <br>
         <div class="form-group">
   <label for="comment">Message:</label>
-  <textarea class="form-control" rows="5" id="comment" ng-model="contactAdminObj.message" required></textarea>
+  <textarea class="form-control" rows="5" id="comment" ng-model="message.message" required></textarea>
 </div>
         <button type="submit" class="btn btn-primary" ng-disabled="ContactAdminForm.$invalid" ng-click="contactAdminFn()">Send Message</button>
     </form>
 </div>
 
 </div>
-
-
-<!-- Need to figure out how to display exception if they leave field blank -->
-<!-- WORK ON SCIPTS HERE -->
-<!--
-<script>
-
-  var myBtn = document.getElementById('contactAdminButton');
-  console.log(myBtn);
-  myBtn.addEventListener('click', function(){
-    window.alert('Thank you. Your Message has been sent successfully');
-
-  })
-
-
-/*
-  function preventDefault()
-  {
-    var empt = document.forms["ContactAdminFrom"].value;
-    if (empt.value.length == 0)
-     {
-        window.alert("Please enter values in all fields");
-        return false;
-     }
-     return true;
-  }
-  */
-
-/*
-  function required()
-   {
-     var empt = document.forms["ContactAdminFrom"].value;
-     if (empt.value.length == 0)
-      {
-         window.alert("Please enter values in all fields");
-         return false;
-      }
-      window.alert('Thank you. Your Message has been sent successfully');
-      return true;
-    }
-    */
-
-</script>
--->

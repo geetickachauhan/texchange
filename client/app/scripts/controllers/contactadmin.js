@@ -7,13 +7,18 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('ContactadminCtrl', function ($scope) {
-    $scope.contactAdminObj = { }
-
-    console.log($scope.contactAdmin);
+  .controller('ContactadminCtrl', function ($scope, $location, Admin) {
+    
+    $scope.message = {};
+    
 
     $scope.contactAdminFn = function(){
-      window.alert("Thank you. Your Message has been sent successfully to the Admin.");
+
+      Admin.sendAdminMessage($scope.message)
+
+      $scope.showErrorMessage('Thank you. Your Message has been sent successfully to the Admin.', "Okay", function(){
+        $location.path('/')
+      }); 
 
       var file = new File([""], "contactAdmin.txt", {type: "text/plain;charset=utf-8"});
       //file.open("contactAdmin.txt");

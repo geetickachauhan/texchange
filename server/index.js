@@ -29,6 +29,12 @@ mongoose.connection.once('open', function() {
   // Load all system models
   app.models = require('./models/index');
 
+  // Write to file
+  app.use('/sendAdminMessage', function (req, res, next) {
+    console.log('Request', req);
+    next()
+  })
+
   // Load the routes
   var routes = require('./routes');
 
@@ -41,11 +47,5 @@ mongoose.connection.once('open', function() {
   app.listen(3000);
 
   var book = mongoose.model('book', app.models.book.BookSchema)
-
-  book.findOne({title: 'Introduction to Sociology'})
-      .populate('seller')
-      .exec(function(err, book){
-        console.log(book);
-      })
 
 });

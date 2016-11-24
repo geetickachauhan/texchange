@@ -300,4 +300,22 @@
       });
     }
   }
+})
+
+// BOOK ENDPOINTS
+.factory('Admin', function($http) {
+  return {
+    sendAdminMessage: function(message){
+      console.log(message)
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/sendAdminMessage',
+        data: message
+      }).then(function successCallback(response) {
+
+      }, function errorCallback(response) {
+
+      });
+    }
+  }
 });
