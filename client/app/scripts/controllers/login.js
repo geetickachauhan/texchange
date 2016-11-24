@@ -17,15 +17,6 @@ angular.module('clientApp')
 
     $scope.loginAttempt = function(){
 
-      // Validate here
-      $scope.showErrorMessage('Message', "Okay", function(){
-        
-        // Once user clicks Okay button
-        
-        return;
-
-      }); 
-
       // Logs in to DB  
       User.login($scope.loginUser).then(function(res){
         if(res.data.length > 0){

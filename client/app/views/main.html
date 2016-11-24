@@ -1,7 +1,7 @@
 <div class="jumbotron">
-  <h1 ng-if="user.status">Welcome to texchange, {{user.first_name}}!</h1>
-  <h1 ng-if="!user.status || user.status === undefined"">Welcome to texchange!</h1>
-  <p class="lead">
+  <h1 ng-if="user.status" style="text-align:center">Welcome to Texchange, {{user.first_name}}!</h1>
+  <h1 ng-if="!user.status || user.status === undefined" style="text-align:center">Welcome to Texchange!</h1>
+  <p class="lead" style="text-align:center">
     Find the best textbooks at the best prices
   </p>
   <a href="#/listbook" class="btn btn-primary btn-lg btn-block">Sell a Textbook</a>
