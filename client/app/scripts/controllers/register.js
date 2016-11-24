@@ -16,12 +16,31 @@ angular.module('clientApp')
   	}
   	$scope.birthday = {};
 
+
   	$scope.registerUser = function(){
 
-      if($scope.user.password < 8){
-        // Fix error
-        return;
-      }
+      var errorMessage = "";
+
+            if($scope.user.email.includes("@") === false)
+            {
+              errorMessage += "Invalid email entered\n"
+            }
+
+            if($scope.user.username.length < 6 || $scope.user.username.length > 16)
+            {
+              errorMessage += "Username must have length of 6 to 16 characters\n"
+            }
+
+            if($scope.user.password.length < 8 || $scope.user.password.length > 12)
+            {
+              errorMessage += "Password must have length of 8 to 12 characters\n"
+            }
+
+            if(errorMessage.length > 0)
+            {
+              window.alert(errorMessage);
+              return;
+            }
 
   		$scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
   		console.log('Registering:', $scope.user);
