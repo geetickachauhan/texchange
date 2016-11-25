@@ -17,8 +17,14 @@
   'ngTouch',
   'restangular',
   'angularModalService'
-  ]).controller('appCtrl', function ($rootScope, $scope, $location, ModalService) {
+  ]).controller('appCtrl', function ($rootScope, $scope, $location, ModalService, Book) {
     console.log('In AppCtrl');
+
+    $scope.text = '';
+
+    $scope.search = function(){
+      $location.path('searchResults/'+$scope.text);
+    }
 
     $scope.showErrorMessage = function(errormsg, btn, cb) {
 
@@ -31,10 +37,16 @@
               btn ? $scope.btn = btn : $scope.btn = "Okay";
               $scope.close = function(){
                if(cb){cb()}
-                 close(false);
+               close(false);
                $('.modal-backdrop').css('opacity', 0);
                $('.modal-backdrop').css('display', 'none');
-             }
+              }
+              $scope.hideModal = function(){
+                close(false);
+                $('.modal-backdrop').css('opacity', 0);
+                $('.modal-backdrop').css('display', 'none');
+              }
+
            }
          }).then(function(modal) {
              // The modal object has the element built, if this is a bootstrap modal
@@ -88,7 +100,7 @@
     controller: 'BookCtrl',
     controllerAs: 'book'
   })
-  .when('/searchResults', {
+  .when('/searchResults/:search', {
     templateUrl: 'views/searchresults.html',
     controller: 'SearchresultsCtrl',
     controllerAs: 'searchResults'
@@ -202,6 +214,22 @@
       });
     },
 
+    requestPassword: function(email){
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/sendAdminMessage/?type=reset&subject=reset&message='+email,
+        data: {
+          message: email,
+          type: 'reset',
+          subject: 'reset'
+        }
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     update: function(user){
       return $http({
         method: 'PUT',
@@ -258,11 +286,68 @@
     getBooksOfUser: function(userId){
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/user/?seller='+userId
+        url: 'http://localhost:3000/book/?seller='+userId
       }).then(function successCallback(response) {
-
+          return response;
       }, function errorCallback(response) {
 
+      });
+    },
+
+    pay: function(userId, bookId){
+      console.log('ddsfasdk', userId, bookId)
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/book/'+bookId,
+        data: {buyer: userId}
+      }).then(function successCallback(response) {
+          return response;
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    getPurchases: function(userId){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/book/?buyer='+userId
+      }).then(function successCallback(response) {
+          return response;
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    remove: function(bookId){
+      return $http({
+        method: 'DELETE',
+        url: 'http://localhost:3000/book/'+bookId
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    search: function(text){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/book/?title='+text
+      }).then(function successCallback(response) {
+          return response
+      }, function errorCallback(response) {
+          return response
+      });
+    },
+
+    searchAuthor: function(text){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/book/?author='+text
+      }).then(function successCallback(response) {
+          return response
+      }, function errorCallback(response) {
+          return response
       });
     },
 
@@ -302,7 +387,7 @@
   }
 })
 
-// BOOK ENDPOINTS
+// ADMIN ENDPOINTS
 .factory('Admin', function($http) {
   return {
     sendAdminMessage: function(message){

@@ -12,99 +12,13 @@
         <p><span>Author: <b>{{book.author}}</b></span></p>
       <h3>Book Details</h3>
       <hr class="book-detail-divider">
-      <p class=""><span>Sold by: <a ng-href="#/profile-view/{{book.seller._id}}">{{book.seller.username}}</a></span></p>
-      <p class=""><span>Pages: <b>{{book.num_pages}}</b></span>
-      <p class=""><span>Edition number: <b>{{book.edition}}</b></span>
-      <p class=""><span>Genre: <b>{{book.edition}}</b></span>
-      <p class=""><span>Condition: <b>{{book.condition}}</b></span> 
+      <p class=""><span>Sold by: <a ng-href="#/profile-view/{{book.seller}}">{{seller_username}}</a></span></p>
+      <p class=""><span>Pages: <b>{{book.num_pages}}</b></span></p>
+      <p class=""><span>Edition number: <b>{{book.edition}}</b></span></p>
+      <p class=""><span>Genre: <b>{{book.edition}}</b></span></p>
+      <p class=""><span>Condition: <b>{{book.condition}}</b></span> </p>
       <br>
-      <button ng-if="user.status" type="button" class="btn btn-primary btn-block" ng-click="addBookToCart()">Add to Cart</button>  
+      <button ng-class="{disabled: alreadyAdded}" ng-if="user.status && !isUsersBook" type="button" class="btn btn-lg btn-primary btn-lg btn-block" ng-click="addBookToCart()">Add to Cart</button>  
     </div>
   </div>
 </div>
-
-
-<!-- 
-
-<div class="detail-book-wrapper">
-  <div class="row">
-
-  <div class="col-md-3">
-
-    <div class="detail-book-image">
-      <img src="images/booktest.jpg">
-      <p>ISBN: <a href="#">{{book.isbn}}</a></p>
-
-    </div>
-
-  </div>
-  <div class="col-md-9">
-    <div class="detail-book-content">
-      <h2>{{book.title}} <small>({{book.cover_type}})</small></h2>
-      <p><span>Author: <b>{{book.author}}</b></span></p>
-
-      <div class="detail-book-info">
-        <span class="detail-book-info-title">Book Details</span>
-      </div>
-      <div class="detail-book-info-wrapper">
-        <p class="detail-book-info-items"><span>Sold by: <a href="#">Username</a></span></p>
-        <p class="detail-book-info-items"><span>Pages: <b>475</b></span>
-        <p class="detail-book-info-items"><span>Edition number: <b>4</b></span>
-        <p class="detail-book-info-items"><span>Genre: <b>Science</b></span>
-        <p class="detail-book-info-items"><span>Condition: <b>New</b></span>
-      </div>
-
-      <div class="detail-book-button-wrapper">
-        <span>US$175.00</span>
-        <button type="button" class="btn btn-primary detail-book-button">Add to Cart</button>  
-      </div>      
-    </div>
-
-  </div>
-
-</div>
-<div class="detail-book-desc">
-
-<h2>About the book</h2>
-<hr>
-
-
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-
-
-</div>
-
-
-<div class="fullPage">
-  <div class="polaroid">
-    <img src="../images/booktest.jpg" alt="Book Test" style="width:100%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
-  </div>
-  <div class="shoppingInfo">
-    <br><br>
-    <p align="left"> Price: $16.00</p><br><br><br>
-    <p align="center"><button onclick="window.alert('It has been added')">Add to Cart</button></p>
-  </div>
-  <div class="totalBookInfo">
-    <bookTitle>The Magnolia Story </bookTitle> Hardcover - October 18, 2016 <br>
-    By: Chip Gaines<tab></tab>ISBN-13: 978-0718079185<br><br><br><br>
-    <div class="bookDescription" style="font-size: 18px">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet eget sapien ac imperdiet. Phasellus sagittis mi vitae est auctor, non venenatis nisl condimentum. Aliquam ac aliquet mi. Suspendisse consectetur non sem at varius. Aenean nisl lectus, viverra ut lorem in, suscipit auctor orci. Suspendisse potenti. In hac habitasse platea dictumst.
-    </div>
-  </div>
-  <br><br><br><br><br><br><br>
-  <p style="font-size: 25px"> Product Details</p>
-  <p style="font-size: 18px; padding-left: 4em">
-    Cover Type: .......<br>
-    Pages: .......<br>
-    Language: .......<br>
-    Edition Number: .......<br>
-    Genre: .......<br>
-    Book Condition: .......<br>
-  </p>
-</div> -->

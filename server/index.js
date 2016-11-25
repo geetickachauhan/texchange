@@ -42,19 +42,56 @@ mongoose.connection.once('open', function() {
   //Send admin message / Write to file
   app.use('/sendAdminMessage', function (req, res, next) {
     
-    // Create file
-    var stream = fs.createWriteStream("adminMessages/"+(messageCounter++)+".txt");
-    stream.once('open', function(fd) {
 
-      // Write into file
-      stream.write("======== ADMIN MESSAGE =======\n\n");
-      stream.write("Type: " +req.query.type + "\n");
-      stream.write("Subject: " +req.query.subject + "\n\n");
-      stream.write("Message: " +req.query.message + "\n");
+    if(req.query.type === 'reset'){
 
-      // Close the file stream
-      stream.end();
-    });
+      var user = mongoose.model('user', app.models.book.UserSchema)
+
+      user.findOne({email: req.query.message}, function(err, user){
+          if (err) return 
+          var found = false;
+
+          if(user !== null){
+            found = true;
+          }
+
+          if(found){
+            // Create file
+            var stream = fs.createWriteStream("resetPassword/"+(messageCounter++)+".txt");
+            stream.once('open', function(fd) {
+
+              // Write into file
+              stream.write("======== RESET PASSWORD REQUESTED =======\n\n");
+              stream.write("Hello, \nDear " +req.query.message+ ". Our system has been notified of your account requesting a password reset. Please use the temporary password 41z!@rf to sign in and a new password option will be available to you. Thank you for being a loyal texchange customer and happy shopping!\n\nLove,\nThe texchange team");
+
+              // Close the file stream
+              stream.end();
+            });      
+          }
+
+
+      });
+
+      
+    }
+
+    else {
+
+      // Create file
+      var stream = fs.createWriteStream("adminMessages/"+(messageCounter++)+".txt");
+      stream.once('open', function(fd) {
+
+        // Write into file
+        stream.write("======== ADMIN MESSAGE =======\n\n");
+        stream.write("Type: " +req.query.type + "\n");
+        stream.write("Subject: " +req.query.subject + "\n\n");
+        stream.write("Message: " +req.query.message + "\n");
+
+        // Close the file stream
+        stream.end();
+      });  
+    }
+    
 
     next()
   })

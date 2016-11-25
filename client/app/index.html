@@ -13,6 +13,7 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 <body ng-app="clientApp" ng-controller="appCtrl">
     <!--[if lte IE 8]>
@@ -44,8 +45,9 @@
                 <li><a ng-if="user.status === false || user.status === undefined" ng-href="#/login">Login</a></li>
                 <li><a ng-if="user.status === true" ng-click="signOut()">Sign Out</a></li>
               </ul>
-
-              <input type="text" class="form-control" placeholder="Search for books">
+              <form>
+              <input type="text" class="form-control" placeholder="Search for books" ng-model="text" ng-keyup="search()">
+              </form>
 
             </div>
 

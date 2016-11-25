@@ -2,97 +2,40 @@
 <p class="lead">Keep up with your purchases and check up on your listings</p>
 <hr>
 
-<!-- PURCHASES -->
+<!-- SELLING -->
 <div class="trans-wrapper">
-  <h2>Purchases</h2>
+  <h2>Selling</h2>
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-6" ng-repeat="book in sellingBooks" ng-click="viewBookDetails(book._id)">
         <div class="trans-item">
           <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
           <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Purchased From: <a href="">username</a></p>
-            <p>Transaction Amount: $185.00</p>
-            <a style="margin-right: 15px; border-bottom: 1px solid white;">Report</a>
-            <a>Rate<a>
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="trans-item">
-          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
-          <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Purchased From: <a href="">username</a></p>
-            <p>Transaction Amount: $185.00</p>
-            <a style="margin-right: 15px; border-bottom: 1px solid white;">Report</a>
-            <a>Rate<a>
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="trans-item">
-          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
-          <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Purchased From: <a href="">username</a></p>
-            <p>Transaction Amount: $185.00</p>
-            <a style="margin-right: 15px; border-bottom: 1px solid white;">Report</a>
-            <a>Rate<a>
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="trans-item">
-          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
-          <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Purchased From: <a href="">username</a></p>
-            <p>Transaction Amount: $185.00</p>
-            <a style="margin-right: 15px; border-bottom: 1px solid white;">Report</a>
-            <a>Rate<a>
+            <h3>{{book.title}}</h3>
+            <p>Status: <b>Not Sold</b></p>
+            <p>Sale Price: <b>${{book.price}}</b></p>
+            <button ng-click="cancelBookSale(book)" class="btn btn-danger btn-block">Cancel Sale</button>
           </div>
         </div>
     </div>
   </div>
 </div>
 
-<!-- SELLING -->
+<!-- PURCHASES -->
 <div class="trans-wrapper">
-  <h2>Selling</h2>
+  <h2>Purchases</h2>
   <div class="row">
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-6" ng-repeat="book in purchasedBooks">
         <div class="trans-item">
           <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
           <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Status: <b>Not Sold</b></p>
-            <p>Sale Price: <b>$185.00</b></p>
-            <a href="">Cancel Textbook</a>
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="trans-item">
-          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
-          <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Status: <b>Not Sold</b></p>
-            <p>Sale Price: <b>$185.00</b></p>
-            <a href="">Cancel Textbook</a>
-          </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div class="trans-item">
-          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
-          <div class="trans-content">
-            <h3>Textbook Title</h3>
-            <p>Status: <b>Not Sold</b></p>
-            <p>Sale Price: <b>$185.00</b></p>
-            <a href="">Cancel Textbook</a>
+            <h3>{{book.title}}</h3>
+            <p>Transaction Amount: ${{book.price}}</p>
+            <a style="margin-right: 15px; border-bottom: 1px solid white;">Report</a>
+            <a>Rate</a>
           </div>
         </div>
     </div>
   </div>
 </div>
+
+

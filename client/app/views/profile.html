@@ -120,11 +120,16 @@
             <option>2000</option>
           </select>
           <br>
-        </div>
-        <button type="submit" class="btn btn-primary" ng-click="editMode = true">Edit information</button>   
-        <button ng-if="editMode" class="btn btn-primary" ng-click="saveUser()">Save</button>
+      </div>
 
+        <button type="submit" class="btn btn-primary" ng-hide="editMode" ng-click="editMode = true">Edit information</button>   
         <button type="submit" class="btn btn-danger" ng-click="deactivateUser()">Deactivate</button> 
+        <button ng-if="editMode" class="btn btn-primary" ng-click="goToReset()">Reset Password</button>
+        <br>
+        <br>
+        <div ng-if="editMode">
+          <button class="btn btn-primary btn-lg btn-block" ng-click="saveUser()">Save</button>
+        </div>
       </div>
     </div> 
   </div>

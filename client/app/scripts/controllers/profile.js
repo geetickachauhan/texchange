@@ -19,6 +19,9 @@
  		return;
  	}
 
+  $scope.goToReset = function(){
+    $location.path('/forgotPassword')
+  }
 	$scope.birthday = {};
 	$scope.editMode = false;
 
@@ -47,7 +50,9 @@
           $scope.showErrorMessage('You did not make any changes. Please try again.', "Okay", function(){
 
           })
-          	return;
+
+          $scope.editMode = false;  
+        	return;
         }
 
       if(oldEmail != $scope.user.email)
@@ -55,6 +60,13 @@
         $scope.showErrorMessage('You just changed your email. Please verify it.', "Okay", function(){
   			// nothing to be done and do not return
         })
+        User.update($scope.user).then(function(res){
+          $rootScope.user = res.data;
+          $scope.editMode = false;
+          $rootScope.user.status = true;
+        })
+        $scope.editMode = false;
+        return
       }
       if(/[^a-zA-Z(* )]/.test($scope.user.first_name)) // test if there is something that's not an alphabet
       {

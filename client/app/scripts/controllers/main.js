@@ -18,7 +18,12 @@ angular.module('clientApp')
 
     // Get featured books
     Book.getBooks().then(function(res){
-        $scope.books = res.data;
+        if($rootScope.user){
+            $scope.books = res.data.filter(book => book.seller !== $rootScope.user._id);    
+        } else {
+            $scope.books = res.data;
+        }
+        
     })
 
     // View Book Details Page

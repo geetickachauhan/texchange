@@ -14,6 +14,7 @@
                                             class="form-control"
                                             name="cardNumber"
                                             placeholder="Address"
+                                            ng-model="paymentInfo.shipping_address"
                                             autocomplete="cc-number"
                                             required autofocus 
                                         />
@@ -33,6 +34,7 @@
                                             name="cardNumber"
                                             placeholder="Address"
                                             autocomplete="cc-number"
+                                            ng-model="paymentInfo.billing_address"
                                             required autofocus 
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -51,6 +53,7 @@
                                             name="cardNumber"
                                             placeholder="Valid Card Number"
                                             autocomplete="cc-number"
+                                            ng-model="paymentInfo.card_number"
                                             required autofocus 
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -66,6 +69,7 @@
                                         type="tel" 
                                         class="form-control" 
                                         name="cardExpiry"
+                                        ng-model="paymentInfo.card_exp"
                                         placeholder="MM / YY"
                                         autocomplete="cc-exp"
                                         required 
@@ -80,6 +84,7 @@
                                         class="form-control"
                                         name="cardCVC"
                                         placeholder="CVC"
+                                        ng-model="paymentInfo.card_cv"
                                         autocomplete="cc-csc"
                                         required
                                     />
@@ -88,7 +93,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" type="button">Pay</button>
+                                <button class="subscribe btn btn-success btn-lg btn-block" ng-click="pay()" type="button">Pay</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">

@@ -1,74 +1,26 @@
 <h1 class="header">Search Results</h1>
-<p class="lead">Results for '<i>Biology</i>'</p>
+<p class="lead">Results for '<i>{{searchText}}</i>'</p>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-4 animated fadeInUp" ng-repeat="book in results" ng-click="viewBookDetails(book._id)">
     <div class="book-wrapper">
       <div class="book">
         <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
         <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
+          <h3>{{book.title}}</h3>
+          <h6>{{book.author}}</h6>
+          <span class="book-price">${{book.price}}</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 animated fadeInUp" ng-repeat="book in authorResults" ng-click="viewBookDetails(book._id)">
     <div class="book-wrapper">
       <div class="book">
         <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
         <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="book-wrapper">
-      <div class="book">
-        <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
-        <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="book-wrapper">
-      <div class="book">
-        <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
-        <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="book-wrapper">
-      <div class="book">
-        <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
-        <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="book-wrapper">
-      <div class="book">
-        <div class="book-image" style="background-image: url(images/books/book1.jpg)"></div>
-        <div class="book-content">
-          <h3>Title</h3>
-          <h6>Author</h6>
-          <span class="book-price">$20</span>
+          <h3>{{book.title}}</h3>
+          <h6>{{book.author}}</h6>
+          <span class="book-price">${{book.price}}</span>
         </div>
       </div>
     </div>

@@ -16,8 +16,15 @@ angular.module('clientApp')
   		return;
   	}
 
-  	$scope.cart = [];
+    // View Book Details Page
+    $scope.viewBookDetails = function(bookId){
+      $location.path('/book/'+bookId);
+    }
 
+  	$scope.cart = [];
+    console.log('cart', $rootScope.user.cart)
+
+    // Populate angular cart with book info
   	for(var i = 0; i < $rootScope.user.cart.length; i++){
   		Book.getBook($rootScope.user.cart[i]).then(function(res){
   			$scope.cart.push(res.data);
@@ -30,5 +37,9 @@ angular.module('clientApp')
   			$rootScope.user.cart = res.data.cart;
   		})
   	}
+
+    $scope.checkout = function(){
+      $location.path('/payment')
+    }
 
   });

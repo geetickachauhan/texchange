@@ -1,6 +1,0 @@
-======== ADMIN MESSAGE =======
-
-Type: Unban
-Subject: Subject
-
-Message: This is the message.
