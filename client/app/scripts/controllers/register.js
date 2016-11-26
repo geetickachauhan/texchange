@@ -56,10 +56,10 @@ angular.module('clientApp')
       User.create($scope.user).then(function(res){
         $rootScope.user = res.data;
         $rootScope.user.status = true;
+        $location.path('/'); 
         $scope.showErrorMessage("Please verify your email.", "Ok", function(){
           return;
-        });
-        $location.path('/');  
+        }); 
       })
     }
   });

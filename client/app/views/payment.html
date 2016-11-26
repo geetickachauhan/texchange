@@ -1,5 +1,5 @@
 
-<h1>Payment Method <small>Pay for checked out items</small></h1>
+<h1 style="text-align:center""text">Pay For Your Books</h1>
 <hr>
 <div class="panel panel-default credit-card-box">
                 <div class="panel-body">
@@ -10,10 +10,10 @@
                                     <label for="cardNumber">Shipping Address</label>
                                     <div class="input-group">
                                         <input 
-                                            type="tel"
+                                            type="text"
                                             class="form-control"
                                             name="cardNumber"
-                                            placeholder="Address"
+                                            placeholder="Shipping Address"
                                             ng-model="paymentInfo.shipping_address"
                                             autocomplete="cc-number"
                                             required autofocus 
@@ -29,10 +29,10 @@
                                     <label for="cardNumber">Billing Address</label>
                                     <div class="input-group">
                                         <input 
-                                            type="tel"
+                                            type="text"
                                             class="form-control"
                                             name="cardNumber"
-                                            placeholder="Address"
+                                            placeholder="Billing Address"
                                             autocomplete="cc-number"
                                             ng-model="paymentInfo.billing_address"
                                             required autofocus 
@@ -45,13 +45,32 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <label for="cardHolderName">Cardholder's Name</label>
                                     <div class="input-group">
                                         <input 
-                                            type="tel"
+                                            type="text"
+                                            class="form-control"
+                                            name="cardHolderName"
+                                            placeholder="Cardholder's Name"
+                                            autocomplete="cc-number"
+                                            ng-model="paymentInfo.cardholder_name"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <div class="input-group">
+                                        <input 
+                                            type="text"
                                             class="form-control"
                                             name="cardNumber"
-                                            placeholder="Valid Card Number"
+                                            placeholder="Valid Card Number (16 digits)"
                                             autocomplete="cc-number"
                                             ng-model="paymentInfo.card_number"
                                             required autofocus 
@@ -64,9 +83,9 @@
                         <div class="row">
                             <div class="col-xs-7 col-md-7">
                                 <div class="form-group">
-                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <label for="cardExpiry"><span class="hidden-xs">Expiration Date</span></label>
                                     <input 
-                                        type="tel" 
+                                        type="text" 
                                         class="form-control" 
                                         name="cardExpiry"
                                         ng-model="paymentInfo.card_exp"
@@ -78,14 +97,14 @@
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
-                                    <label for="cardCVC">CV CODE</label>
+                                    <label for="cardCVV">CVV Code</label>
                                     <input 
-                                        type="tel" 
+                                        type="text" 
                                         class="form-control"
-                                        name="cardCVC"
-                                        placeholder="CVC"
-                                        ng-model="paymentInfo.card_cv"
-                                        autocomplete="cc-csc"
+                                        name="cardCVV"
+                                        placeholder="CVV (3 digits)"
+                                        ng-model="paymentInfo.card_cvv"
+                                        autocomplete="cc-cvv"
                                         required
                                     />
                                 </div>
