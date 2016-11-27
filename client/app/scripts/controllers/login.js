@@ -17,8 +17,14 @@ angular.module('clientApp')
 
     $scope.loginAttempt = function(){
 
-      // Logs in to DB  
+      // Logs in to DB
       User.login($scope.loginUser).then(function(res){
+        // to check if the user is banned
+        if(res.data.isBanned == true)
+        {
+          $scope.showErrorMessage('Sorry, you may not login. You have a login restriction and will have to contact the admin');
+          return;
+        }
         if(res.data.length > 0){
           $rootScope.user = res.data[0];
           $rootScope.user.status = true;
