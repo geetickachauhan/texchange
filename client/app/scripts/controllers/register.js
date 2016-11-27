@@ -9,7 +9,7 @@
  */
 angular.module('clientApp')
   .controller('RegisterCtrl', function ($scope, User, $location, $rootScope) {
-    
+
     $scope.user = {
       isBanned: false,
       rating: 3
@@ -23,43 +23,51 @@ angular.module('clientApp')
 
             if($scope.user.email.includes("@") === false)
             {
-              ifError = true;
-              $scope.showErrorMessage("Invalid email entered", "Ok", function(){
+              $scope.showErrorMessage("Invalid email entered", "OK", function(){
                 return;
               });
+              return;
             }
 
             if($scope.user.username.length < 6 || $scope.user.username.length > 16)
             {
-              ifError = true;
-              $scope.showErrorMessage("Username must have length of 6 to 16 characters", "Ok", function(){
+              $scope.showErrorMessage("Username must have length of 6 to 16 characters", "OK", function(){
                 return;
               });
+              return;
             }
 
             if($scope.user.password.length < 8 || $scope.user.password.length > 12)
             {
-              ifError = true;
-              $scope.showErrorMessage("Password must have length of 8 to 12 characters", "Ok", function(){
+              $scope.showErrorMessage("Password must have length of 8 to 12 characters", "OK", function(){
                 return;
               });
-            }
-
-            if (ifError === true)
-            {
               return;
             }
 
-      $scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
-      console.log('Registering:', $scope.user);
 
-      User.create($scope.user).then(function(res){
-        $rootScope.user = res.data;
-        $rootScope.user.status = true;
-        $location.path('/'); 
-        $scope.showErrorMessage("Please verify your email.", "Ok", function(){
-          return;
-        }); 
-      })
+
+            User.getEmail($scope.user.email).then(function(res){
+              console.log("Response object" + res.data);
+              if(res.data.length > 0)
+              {
+              $scope.showErrorMessage("This email already exists in our system. Please enter another email", "OK",function(){
+
+              });
+                return; // means after this registering will not take place
+              }
+
+              $scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
+              console.log('Registering:', $scope.user);
+
+              User.create($scope.user).then(function(res){
+                $rootScope.user = res.data;
+                $rootScope.user.status = true;
+                $scope.showErrorMessage("Please verify your email.", "OK", function(){
+                  return;
+              });
+              $location.path('/');
+              })
+            });
     }
   });
