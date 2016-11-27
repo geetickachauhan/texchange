@@ -8,13 +8,15 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-.controller('PaymentCtrl', function ($scope, $rootScope, $location, Book) {
+.controller('PaymentCtrl', function ($scope, $rootScope, $location, Book, User) 
+{
 	$scope.cart = $rootScope.user.cart;
 	console.log($scope.cart);
 	
 
 	// Pay books in DB
-	$scope.pay = function(){
+	$scope.pay = function()
+	{
 		console.log('payment', $scope.paymentInfo);
 
 		var ifError = false;
@@ -62,8 +64,6 @@ angular.module('clientApp')
 
             if($scope.paymentInfo.card_exp.length === 5)
             {
-            	console.log($scope.paymentInfo.card_exp.substr(0, 2));
-            	console.log($scope.paymentInfo.card_exp.substr(3, 2));
            	  	if(!isNaN($scope.paymentInfo.card_exp.substr(0,2)) && $scope.paymentInfo.card_exp.charAt(2) === '/'
            	  		&& !isNaN($scope.paymentInfo.card_exp.substr(3,2)))
            	  	{
@@ -120,12 +120,25 @@ angular.module('clientApp')
               return;
             }
 
-		for(var i = 0; i < $scope.cart.length; i++){
+		for(var i = 0; i < $scope.cart.length; i++)
+		{
 			Book.pay($rootScope.user._id, $scope.cart[i]);
 		}
-		$scope.showErrorMessage('Thank you for your purchase! We hope you ejoyed using Texchange!', "Ok", function(){
-			$location.path('/');
-		});
+		/*
+  		$scope.cart.splice(0, $scope.cart.length);
+  		User.updateCart($rootScope.user._id, $scope.cart).then(function(res){
+  			$rootScope.user.cart = res.data.cart;
+  			$location.path('/'); 
+			$scope.showErrorMessage('Thank you for your purchase! We hope you ejoyed using Texchange!', "Ok", function(){
+				return;
+			});
+  		})*/
+		Book.emptyCart($rootScope.user._id, $scope.cart[i]).then(function(res){
+			console.log(res.data)
+  			$rootScope.user.cart = res.data;
+  			$location.path('/'); 
+  		})
+  		
 	}
 
 });

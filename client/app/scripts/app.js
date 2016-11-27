@@ -295,11 +295,24 @@
     },
 
     pay: function(userId, bookId){
-      console.log('ddsfasdk', userId, bookId)
+      console.log('Book: ', userId, bookId)
       return $http({
         method: 'PUT',
         url: 'http://localhost:3000/book/'+bookId,
         data: {buyer: userId}
+      }).then(function successCallback(response) {
+          return response;
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    emptyCart: function(userId){
+      console.log('Book: ', userId)
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+userId,
+        data: {cart: []}
       }).then(function successCallback(response) {
           return response;
       }, function errorCallback(response) {
