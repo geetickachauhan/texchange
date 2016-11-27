@@ -24,6 +24,7 @@
   }
 	$scope.birthday = {};
 	$scope.editMode = false;
+  $scope.admin = false; // by default define admin to be false
 
 	User.get($rootScope.user._id).then(function(res){
 		$scope.user = res.data;
@@ -41,6 +42,17 @@
     var oldbirthday = bday[0];
     var oldbirthmonth = bday[1];
     var oldbirthyear = bday[2];
+
+    // CHECK OUT FOR ADMIN RELATED CHANGES
+    if($scope.user.isAdmin == true)
+    {
+      $scope.admin = true; // to tell the form to display the admin
+      User.getBanned().then(function(res){
+        console.log('Banned users' + res.data);
+        $scope.banned = res.data;
+        // just need to figure out a way to display these banned users now
+      });
+    }
 		// Save edited user
 		$scope.saveUser = function() {
       if($scope.user.first_name == oldfirstname && $scope.user.last_name == oldlastname
@@ -51,7 +63,7 @@
 
           })
 
-          $scope.editMode = false;  
+          $scope.editMode = false;
         	return;
         }
 
