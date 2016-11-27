@@ -37,7 +37,7 @@ angular.module('clientApp')
   		cart.push($scope.book._id)
   		User.updateCart($rootScope.user._id, cart).then(function(res){
   			console.log(res)
-        $scope.showErrorMessage('Book added to your cart.');
+        $scope.showErrorMessage('Book added to your cart.', "Ok");
   		})
       $location.path('/')
   	}
