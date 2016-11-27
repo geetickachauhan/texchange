@@ -20,9 +20,10 @@ angular.module('clientApp')
         console.log(res.data)
         $scope.books = res.data;
       })
+
 	  }, function errorCallback(response) {
 	  });
-    
+
   // View Book Details Page
   $scope.viewBookDetails = function(bookId){
     $location.path('/book/'+bookId);

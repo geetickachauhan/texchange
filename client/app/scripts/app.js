@@ -225,6 +225,17 @@
       });
     },
 
+    getBanned: function(){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/user/?isBanned='+'1'
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     requestPassword: function(email){
       return $http({
         method: 'POST',

@@ -59,7 +59,7 @@
               <option>11</option>
               <option>12</option>
             </select>
-        
+
           <select id="disabledSelect" class="date form-control" ng-model="birthday.day" required>
             <option value="" disabled selected>Day</option>
             <option>1</option>
@@ -94,7 +94,7 @@
             <option>30</option>
             <option>31</option>
           </select>
-         
+
           <select id="disabledSelect" class="date form-control" ng-model="birthday.year" required>
             <option value="" disabled selected>Year</option>
             <option>1980</option>
@@ -122,8 +122,8 @@
           <br>
       </div>
 
-        <button type="submit" class="btn btn-primary" ng-hide="editMode" ng-click="editMode = true">Edit information</button>   
-        <button type="submit" class="btn btn-danger" ng-click="deactivateUser()">Deactivate</button> 
+        <button type="submit" class="btn btn-primary" ng-hide="editMode" ng-click="editMode = true">Edit information</button>
+        <button type="submit" class="btn btn-danger" ng-click="deactivateUser()">Deactivate</button>
         <button ng-if="editMode" class="btn btn-primary" ng-click="goToReset()">Reset Password</button>
         <br>
         <br>
@@ -131,5 +131,19 @@
           <button class="btn btn-primary btn-lg btn-block" ng-click="saveUser()">Save</button>
         </div>
       </div>
-    </div> 
+
+<!--CHECK OUT FOR ADMIN RELATED CHANGES-->
+    <div class="col-sm-12" ng-if="admin">
+      <hr style="border-top: 1px solid #a0a0a0;">
+      <h4> Banned Users </h4>
+      <p ng-repeat="ban in banned"> {{ban.first_name ban.last_name}} </p> <a href=""> Unban </a> </p>
+      <!--
+      <p>  Jeff Patterson <a href=""> Unban </a> </p>
+      <p>  Sam Smith <a href=""> Unban </a> </p>
+      <p>  Lorem Ipsum <a href=""> Unban </a> </p>
+    -->
+  </div>
+  </div>
+      </div>
+    </div>
   </div>

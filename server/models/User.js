@@ -37,6 +37,11 @@ var UserSchema = new mongoose.Schema({
   	type: Boolean,
   	required: true
   },
+  isAdmin:{
+  	type: Boolean,
+    default: false,
+  	required: true
+  },
   cart: [String]
 });
 
