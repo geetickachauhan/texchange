@@ -24,7 +24,7 @@ angular.module('clientApp')
             if($scope.user.email.includes("@") === false)
             {
               $scope.showErrorMessage("Invalid email entered", "OK", function(){
-                return;
+              
               });
               return;
             }
@@ -32,7 +32,7 @@ angular.module('clientApp')
             if($scope.user.username.length < 6 || $scope.user.username.length > 16)
             {
               $scope.showErrorMessage("Username must have length of 6 to 16 characters", "OK", function(){
-                return;
+
               });
               return;
             }
@@ -40,7 +40,7 @@ angular.module('clientApp')
             if($scope.user.password.length < 8 || $scope.user.password.length > 12)
             {
               $scope.showErrorMessage("Password must have length of 8 to 12 characters", "OK", function(){
-                return;
+
               });
               return;
             }

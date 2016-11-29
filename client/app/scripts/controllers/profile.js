@@ -25,6 +25,7 @@
 	$scope.birthday = {};
 	$scope.editMode = false;
   $scope.admin = false; // by default define admin to be false
+  $scope.numBanned = false;
 
 	User.get($rootScope.user._id).then(function(res){
 		$scope.user = res.data;
@@ -43,15 +44,29 @@
     var oldbirthmonth = bday[1];
     var oldbirthyear = bday[2];
 
+    console.log("User is admin=" + $scope.user.isAdmin);
     // CHECK OUT FOR ADMIN RELATED CHANGES
     if($scope.user.isAdmin == true)
     {
       $scope.admin = true; // to tell the form to display the admin
       User.getBanned().then(function(res){
         console.log('Banned users' + res.data);
-        $scope.banned = res.data;
+        $scope.banned = res.data; // array of banned user objects
+        if($scope.banned.length > 0)
+        {
+          $scope.numBanned = true;
+        }
         // just need to figure out a way to display these banned users now
       });
+    }
+
+    $scope.unbanUser = function(user){
+      //basically need to do a put in order to change the banned to unbanned
+      User.updateToUnbanned(user).then(function(res){
+        console.log(res.data);
+        $scope.showErrorMessage('User ' + res.data.first_name + ' ' + res.data.last_name + ' was successfully unbanned');
+      });
+
     }
 		// Save edited user
 		$scope.saveUser = function() {

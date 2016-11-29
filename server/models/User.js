@@ -33,6 +33,11 @@ var UserSchema = new mongoose.Schema({
     default: 3,
     required: true
   },
+  loginCount:{
+  	type: Number,
+    default: 0,
+    required: true
+  },
   isBanned:{
   	type: Boolean,
   	required: true

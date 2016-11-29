@@ -136,7 +136,8 @@
     <div class="col-sm-12" ng-if="admin">
       <hr style="border-top: 1px solid #a0a0a0;">
       <h4> Banned Users </h4>
-      <p ng-repeat="ban in banned"> {{ban.first_name ban.last_name}} </p> <a href=""> Unban </a> </p>
+      <p ng-repeat="x in banned"> {{x.first_name}} {{x.last_name}} <a href="" ng-if="numBanned" ng-click="unbanUser(x)"> Unban </a> </p> 
+      <p ng-if="!numBanned"> There are no banned users yet! </p>
       <!--
       <p>  Jeff Patterson <a href=""> Unban </a> </p>
       <p>  Sam Smith <a href=""> Unban </a> </p>
