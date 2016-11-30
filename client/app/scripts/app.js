@@ -276,6 +276,41 @@
       });
     },
 
+    updateToUnbanned: function(user){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+user._id,
+        data: {isBanned: false}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    updateLoginCount: function(user, count){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+user._id,
+        data: {loginCount: count}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    getFromUsername: function(username){
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/user/?username='+username
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     remove: function(userId){
       return $http({
         method: 'DELETE',
