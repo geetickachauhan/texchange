@@ -9,6 +9,14 @@
  */
 angular.module('clientApp')
 .controller('TransactionsCtrl', function ($scope, $rootScope, User, Book, $location) {
+
+   if(typeof $rootScope.user === 'undefined' || typeof $rootScope.user === undefined){
+      console.log('Not logged in, redirecting to login');
+      $location.path('/login');
+      return;
+   }
+
+
    Book.getBooksOfUser($rootScope.user._id).then(function(res){
    		$scope.sellingBooks = res.data;
    })
@@ -29,4 +37,5 @@ angular.module('clientApp')
 	$scope.viewBookDetails = function(bookId){
 		$location.path('/book/'+bookId);
 	}
+
 });

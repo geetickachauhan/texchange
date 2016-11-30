@@ -28,11 +28,7 @@ var UserSchema = new mongoose.Schema({
   	type: String,
   	required: true
   },
-  rating:{
-  	type: Number,
-    default: 3,
-    required: true
-  },
+  rating: [Number],
   isBanned:{
   	type: Boolean,
   	required: true

@@ -20,13 +20,13 @@
 <hr>
 
 <div class="profile-wrapper">
-
+<div class="col-sm-12 profile-header">
+  <h2>{{user.first_name}} {{user.last_name}}</h2>
+  <hr style="border-top: 1px solid #a0a0a0;">
+</div>
   <div class="row">
-    <div class="col-sm-12 profile-header">
-      <h2>{{user.first_name}} {{user.last_name}}</h2>
-      <hr style="border-top: 1px solid #a0a0a0;">
-    </div>
-    <div class="col-sm-12">
+   
+    <div class="col-sm-6">
       <div>
         <h4>Account Information</h4>
         <p>First Name: <b>{{user.first_name}}</b></p>
@@ -36,7 +36,19 @@
         <p>Date of Birth: <b>{{user.dob}}</b></p>
         <br>
       </div>
-     
+      </div>
+      <div class="col-sm-6">
+      <h4>Rating</h4>
+      <i ng-repeat="i in getRating()" class="glyphicon glyphicon-star" style="color: #f7d100;
+    font-size: 24px;"></i></p>
+      <select id="disabledSelect" class="form-control" ng-model="newRate" ng-change="rateUser()" required>
+          <option value="" disabled selected>Rate User</option>
+          <option>1 Stars</option>
+          <option>2 Stars</option>
+          <option>3 Stars</option>
+          <option>4 Stars</option>
+          <option>5 Stars</option>
+        </select>
       </div>
     </div>
     

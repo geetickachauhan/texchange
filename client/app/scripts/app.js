@@ -203,6 +203,18 @@
       });
     },
 
+    rate: function(userId, new_rating){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+userId,
+        data: {rating: new_rating}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     get: function(userId){
       return $http({
         method: 'GET',
