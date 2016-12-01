@@ -3,24 +3,24 @@
 <hr>
 <div class="panel panel-default credit-card-box">
                 <div class="panel-body">
-                    <form role="form" id="payment-form" method="POST" action="javascript:void(0);">
+                    <form role="form" name="paymentForm" id="payment-form" method="POST" action="javascript:void(0);" novalidate="">
                     <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="cardNumber">Shipping Address</label>
                                     <div class="input-group">
-                                        <input 
+                                        <input
                                             type="text"
                                             class="form-control"
                                             name="cardNumber"
                                             placeholder="Shipping Address"
                                             ng-model="paymentInfo.shipping_address"
                                             autocomplete="cc-number"
-                                            required autofocus 
+                                            required autofocus
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -28,18 +28,18 @@
                                 <div class="form-group">
                                     <label for="cardNumber">Billing Address</label>
                                     <div class="input-group">
-                                        <input 
+                                        <input
                                             type="text"
                                             class="form-control"
                                             name="cardNumber"
                                             placeholder="Billing Address"
                                             autocomplete="cc-number"
                                             ng-model="paymentInfo.billing_address"
-                                            required autofocus 
+                                            required autofocus
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -47,18 +47,18 @@
                                 <div class="form-group">
                                     <label for="cardHolderName">Cardholder's Name</label>
                                     <div class="input-group">
-                                        <input 
+                                        <input
                                             type="text"
                                             class="form-control"
                                             name="cardHolderName"
                                             placeholder="Cardholder's Name"
                                             autocomplete="cc-number"
                                             ng-model="paymentInfo.cardholder_name"
-                                            required autofocus 
+                                            required autofocus
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -66,40 +66,40 @@
                                 <div class="form-group">
                                     <label for="cardNumber">Card Number</label>
                                     <div class="input-group">
-                                        <input 
+                                        <input
                                             type="text"
                                             class="form-control"
                                             name="cardNumber"
                                             placeholder="Valid Card Number (16 digits)"
                                             autocomplete="cc-number"
                                             ng-model="paymentInfo.card_number"
-                                            required autofocus 
+                                            required autofocus
                                         />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-7 col-md-7">
                                 <div class="form-group">
                                     <label for="cardExpiry"><span class="hidden-xs">Expiration Date</span></label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
+                                    <input
+                                        type="text"
+                                        class="form-control"
                                         name="cardExpiry"
                                         ng-model="paymentInfo.card_exp"
                                         placeholder="MM / YY"
                                         autocomplete="cc-exp"
-                                        required 
+                                        required
                                     />
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVV">CVV Code</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         class="form-control"
                                         name="cardCVV"
                                         placeholder="CVV (3 digits)"
@@ -112,7 +112,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" ng-click="pay()" type="button">Pay</button>
+                                <button class="subscribe btn btn-success btn-lg btn-block" ng-click="pay()" type="button" ng-disabled="paymentForm.$invalid">Pay</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -122,4 +122,4 @@
                         </div>
                     </form>
                 </div>
-            </div>          
+            </div>
