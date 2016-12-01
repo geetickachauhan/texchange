@@ -65,6 +65,19 @@
       User.updateToUnbanned(user).then(function(res){
         console.log(res.data);
         $scope.showErrorMessage('User ' + res.data.first_name + ' ' + res.data.last_name + ' was successfully unbanned');
+        User.getBanned().then(function(res){
+          console.log(' New list of banned users' + res.data);
+          $scope.banned = res.data; // array of banned user objects
+          if($scope.banned.length > 0)
+          {
+            $scope.numBanned = true;
+          }
+          if($scope.banned.length === 0)
+          {
+            $scope.numBanned = false;
+          }
+          // just need to figure out a way to display these banned users now
+        });
       });
 
     }

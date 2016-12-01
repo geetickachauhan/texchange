@@ -24,7 +24,7 @@ angular.module('clientApp')
             if($scope.user.email.includes("@") === false)
             {
               $scope.showErrorMessage("Invalid email entered", "OK", function(){
-              
+
               });
               return;
             }
@@ -45,10 +45,8 @@ angular.module('clientApp')
               return;
             }
 
-
-
             User.getEmail($scope.user.email).then(function(res){
-              console.log("Response object" + res.data);
+              console.log("Email response" + res.data[0]);
               if(res.data.length > 0)
               {
               $scope.showErrorMessage("This email already exists in our system. Please enter another email", "OK",function(){
@@ -57,17 +55,28 @@ angular.module('clientApp')
                 return; // means after this registering will not take place
               }
 
-              $scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
-              console.log('Registering:', $scope.user);
-
-              User.create($scope.user).then(function(res){
-                $rootScope.user = res.data;
-                $rootScope.user.status = true;
-                $scope.showErrorMessage("Please verify your email.", "OK", function(){
+              User.getFromUsername($scope.user.username).then(function(res){
+                console.log("Username response " + res.data[0]);
+                if(res.data.length > 0)
+                {
+                  $scope.showErrorMessage("This username already exists in our system. Please enter another username", "OK",function(){  });
                   return;
+                }
+                // nesting needed to make sure that registering does not happen if the username and email dont exist
+                $scope.user.dob = $scope.birthday.month + "/" + $scope.birthday.day + "/" + $scope.birthday.year;
+                console.log('Registering:', $scope.user);
+
+                User.create($scope.user).then(function(res){
+                  $rootScope.user = res.data;
+                  $rootScope.user.status = true;
+                  $scope.showErrorMessage("Please verify your email.", "OK", function(){
+                    return;
+                });
+                $location.path('/');
+                })
               });
-              $location.path('/');
-              })
+
+
             });
     }
   });
