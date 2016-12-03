@@ -1,7 +1,19 @@
+<style>
+
+.paid{
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+</style>
 
 <h1 style="text-align:center""text">Pay For Your Books</h1>
 <hr>
 <div class="panel panel-default credit-card-box">
+                <div class="col-sm-12" ng-if="paid">
+                  <p class="bg-success paid">Your payment has been sucessfully processed</p>
+                </div>
                 <div class="panel-body">
                     <form role="form" name="paymentForm" id="payment-form" method="POST" action="javascript:void(0);" novalidate="">
                     <div class="row">
@@ -112,7 +124,8 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" ng-click="pay()" type="button" ng-disabled="paymentForm.$invalid">Pay</button>
+                                <button ng-click="continue()" class="btn btn-success btn-lg btn-block" id="btn" ng-if="paid">Continue Shopping</button>
+                                <button ng-if="!paid" class="subscribe btn btn-success btn-lg btn-block" ng-click="pay()" type="button" ng-disabled="paymentForm.$invalid">Pay</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -123,3 +136,4 @@
                     </form>
                 </div>
             </div>
+            

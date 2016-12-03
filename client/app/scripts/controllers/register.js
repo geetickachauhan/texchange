@@ -12,7 +12,8 @@ angular.module('clientApp')
 
     $scope.user = {
       isBanned: false,
-      rating: 3
+      rating: [3],
+      reportCount: 0
     }
     $scope.birthday = {};
 
@@ -69,10 +70,10 @@ angular.module('clientApp')
                 User.create($scope.user).then(function(res){
                   $rootScope.user = res.data;
                   $rootScope.user.status = true;
-                  $scope.showErrorMessage("Please verify your email.", "OK", function(){
-                    return;
-                });
-                $location.path('/');
+                  $scope.showErrorMessage("Thank you for registering to Textchange!", "OK", function(){
+                    $location.path('/');    
+                  });
+                
                 })
               });
 

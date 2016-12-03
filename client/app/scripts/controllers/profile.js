@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
  angular.module('clientApp')
- .controller('ProfileCtrl', function ($scope, $rootScope, User, $location) {
+ .controller('ProfileCtrl', function ($scope, $rootScope, User, $location, Admin, Book) {
 
  	console.log('In Profile Controller');
  	console.log($rootScope.user)
@@ -62,8 +62,24 @@
 
     $scope.unbanUser = function(user){
       //basically need to do a put in order to change the banned to unbanned
+
       User.updateToUnbanned(user).then(function(res){
         console.log(res.data);
+
+        Book.getBooksOfUser(res.data._id).then(function(res){
+          var unBannedBooks = res.data;
+          console.log('Unbanned books', unBannedBooks);
+          unBannedBooks.forEach(function(book){
+            Book.updateBookBan(book._id, false);
+          })
+        })
+
+        var message = {
+          username: res.data.username,
+          email: res.data.email
+        }
+
+        Admin.sendUnbanMessage(message);
         $scope.showErrorMessage('User ' + res.data.first_name + ' ' + res.data.last_name + ' was successfully unbanned');
         User.getBanned().then(function(res){
           console.log(' New list of banned users' + res.data);

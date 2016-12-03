@@ -1,0 +1,6 @@
+======== ADMIN MESSAGE =======
+
+Type: Report
+Subject: I need help
+
+Message: I want to report a user

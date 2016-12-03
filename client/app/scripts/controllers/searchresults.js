@@ -12,7 +12,8 @@ angular.module('clientApp')
 
   	$scope.searchText = $routeParams.search;
 
-    Book.search($routeParams.search).then(function(res){
+    Book.getBooksLike($routeParams.search).then(function(res){
+      console.log(res.data);
       $scope.results = res.data;
     })
 

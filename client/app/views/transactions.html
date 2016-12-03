@@ -6,14 +6,33 @@
 <div class="trans-wrapper">
   <h2>Selling</h2>
   <div class="row">
-    <div class="col-sm-12 col-md-6" ng-repeat="book in sellingBooks" ng-click="viewBookDetails(book._id)">
+    <h4 ng-if="sellingBooks.length === 0" class="col-sm-12">You don't have any books currently for sale!</h4>
+    <div class="col-sm-12 col-md-6" ng-repeat="book in sellingBooks" ng-click="viewBookDetails(book._id)" style="cursor: pointer;">
         <div class="trans-item">
           <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
           <div class="trans-content">
             <h3>{{book.title}}</h3>
             <p>Status: <b>Not Sold</b></p>
             <p>Sale Price: <b>${{book.price}}</b></p>
-            <button ng-click="cancelBookSale(book)" class="btn btn-danger btn-block">Cancel Sale</button>
+            <button ng-click="cancelBookSale(book); $event.stopPropagation();" class="btn btn-danger btn-block">Cancel Sale</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLD -->
+<div class="trans-wrapper" ng-if="soldBooks.length">
+  <h2>Sold</h2>
+  <div class="row">
+    <div class="col-sm-12 col-md-6" ng-repeat="book in soldBooks" ng-click="viewBookDetails(book._id)" style="cursor: pointer;">
+        <div class="trans-item">
+          <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
+          <div class="trans-content">
+            <h3>{{book.title}}</h3>
+            <p>Status: <b>Not Sold</b></p>
+            <p>Sale Price: <b>${{book.price}}</b></p>
+            <button ng-click="cancelBookSale(book); $event.stopPropagation();" class="btn btn-danger btn-block">Cancel Sale</button>
           </div>
         </div>
     </div>
@@ -24,6 +43,7 @@
 <div class="trans-wrapper">
   <h2>Purchases</h2>
   <div class="row">
+  <h4 ng-if="purchasedBooks.length === 0" class="col-sm-12">You haven't purchased any books yet!</h4>
     <div class="col-sm-12 col-md-6" ng-repeat="book in purchasedBooks">
         <div class="trans-item">
           <div class="trans-image" style="background-image: url(images/books/book1.jpg)"></div>
@@ -31,7 +51,7 @@
             <h3>{{book.title}}</h3>
             <p>Transaction Amount: ${{book.price}}</p>
             <br>
-            <button ng-click="reportUser(book)" class="btn btn-danger btn-block">Report User</button>
+            <button ng-click="reportUser(book)" ng-disabled="hasReported" class="btn btn-danger btn-block">Report User</button>
           </div>
         </div>
     </div>

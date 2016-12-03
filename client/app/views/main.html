@@ -12,6 +12,7 @@
   <hr>
   <div class="home-stage-featured">
   <div class="row">
+    <div ng-if="books.length === 0" class="col-sm-12"><h4 style="text-align:center">No books just yet. Be our first seller!</h4><br></div>
     <div class="col-sm-4" ng-repeat="book in books" ng-click="viewBookDetails(book._id)">
       <div class="book-wrapper">
         <div class="book">

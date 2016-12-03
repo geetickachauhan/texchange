@@ -14,6 +14,11 @@
     width: 80px;
     display: inline-block;
   }
+  .banned{
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+  }
 </style>
 
 <h1 class="header">Profile Information</h1>
@@ -25,7 +30,9 @@
   <hr style="border-top: 1px solid #a0a0a0;">
 </div>
   <div class="row">
-   
+    <div class="col-sm-12" ng-if="user.isBanned">
+      <p class="bg-danger banned">This user has been banned</p>
+    </div>
     <div class="col-sm-6">
       <div>
         <h4>Account Information</h4>
@@ -41,7 +48,9 @@
       <h4>Rating</h4>
       <i ng-repeat="i in getRating()" class="glyphicon glyphicon-star" style="color: #f7d100;
     font-size: 24px;"></i></p>
-      <select id="disabledSelect" class="form-control" ng-model="newRate" ng-change="rateUser()" required>
+    <div ng-if="loggedIn">
+    
+      <select ng-if="!self" id="disabledSelect" class="form-control" ng-model="rating.newRate" ng-change="rateUser()" required>
           <option value="" disabled selected>Rate User</option>
           <option>1 Stars</option>
           <option>2 Stars</option>
@@ -49,7 +58,10 @@
           <option>4 Stars</option>
           <option>5 Stars</option>
         </select>
+        <br>
+        <button ng-if="loggedInUser.isAdmin && !user.isBanned" type="button" class="btn btn-danger btn-block" ng-click="ban()">Ban User</button>
       </div>
+    </div>
     </div>
     
     <h3>Books Currently For Sale</h3>

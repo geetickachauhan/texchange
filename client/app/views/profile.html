@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="col-sm-12 profile-header">
-      <h2>{{user.first_name}} {{user.last_name}}</h2>
+      <h2>{{user.first_name}} {{user.last_name}} <small ng-if="user.isAdmin">Administrator</small></h2>
       <hr style="border-top: 1px solid #a0a0a0;">
     </div>
     <div class="col-sm-12">

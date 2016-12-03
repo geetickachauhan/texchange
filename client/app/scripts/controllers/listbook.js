@@ -24,77 +24,107 @@ angular.module('clientApp')
 
       if(/[^(?!.*  )a-zA-Z0-9]/.test($scope.book.title)) // test if any are not alphanumeric
       {
-        window.alert("Book Title must be alphanumeric");
+        $scope.showErrorMessage("Book Title must be alphanumeric", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^0-9]/.test($scope.book.isbn)) // test if they are not numeric
       {
-        window.alert("ISBN must be numeric");
+        $scope.showErrorMessage("ISBN must be numeric", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.isbn.length != 13)
       {
-        window.alert("ISBN must be a 13 digit field");
+        $scope.showErrorMessage("ISBN must be a 13 digit field", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^a-zA-Z(* )]/.test($scope.book.author)) // test if there is something that's not an alphabet
       {
-        window.alert("Author must be alphabetic");
+        $scope.showErrorMessage("Author must be alphabetic", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.author.length > 20)
       {
-        window.alert("Author must be max length 20");
+        $scope.showErrorMessage("Author must be max length 20", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^0-9]/.test($scope.book.edition)) // test if there is something that's not an number
       {
-        window.alert("Edition must be numeric");
+        $scope.showErrorMessage("Edition must be numeric", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.edition.length > 5)
       {
-        window.alert("Edition must be max length 5");
+        $scope.showErrorMessage("Edition must be max length 5", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^\b((N|n)ew)|((G|g)ood)|((P|p)oor)\b]/.test($scope.book.condition))
       {
-        window.alert("Condition can only be New, Good or Poor");
+        $scope.showErrorMessage("Condition can only be New, Good or Poor", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^0-9]/.test($scope.book.num_pages))
       {
-        window.alert("Number of Pages can only be numeric");
+        $scope.showErrorMessage("Number of Pages can only be numeric", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.num_pages.length > 8)
       {
-        window.alert("Number of Pages must be a max of 8 characters");
+        $scope.showErrorMessage("Number of Pages must be a max of 8 characters", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^0-9.]/.test($scope.book.price))
       {
-        window.alert("Price can only be numeric");
+        $scope.showErrorMessage("Price can only be numeric", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.price.length > 8)
       {
-        window.alert("Price must be a max of 8 characters");
+        $scope.showErrorMessage("Price must be a max of 8 characters", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^a-zA-Z]/.test($scope.book.language))
       {
-        window.alert("Language must be only Alphabet");
+        $scope.showErrorMessage("Language must be only Alphabet", "Ok", function(){
+          
+        });
         return;
       }
       if(/[^a-zA-Z]/.test($scope.book.genre))
       {
-        window.alert("Genre must be alphabetic");
+        $scope.showErrorMessage("Genre must be alphabetic", "Ok", function(){
+          
+        });
         return;
       }
       if($scope.book.genre.length > 20)
       {
-        window.alert("Genre must be a maximum of 20 fields");
+        $scope.showErrorMessage("Genre must be a maximum of 20 fields", "Ok", function(){
+          
+        });
         return;
       }
 

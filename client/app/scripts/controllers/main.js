@@ -20,9 +20,12 @@ angular.module('clientApp')
     // Get featured books
     Book.getBooks().then(function(res){
         if($rootScope.user){
-            $scope.books = res.data.filter(book => book.seller !== $rootScope.user._id);
+
+            $scope.books = res.data.filter(book => book.seller !== $rootScope.user._id && !book.isPaid && !book.isBanned);
+            console.log($scope.books)
         } else {
-            $scope.books = res.data;
+            $scope.books = res.data.filter(book => !book.isPaid && !book.isBanned);
+            // console.log($scope.books)
         }
 
     })

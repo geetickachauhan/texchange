@@ -43,7 +43,11 @@ var UserSchema = new mongoose.Schema({
     default: false,
   	required: true
   },
-  cart: [String]
+  cart: [String],
+  reportCount:{
+    type: Number,
+    required: true
+  }
 });
 
 UserSchema.plugin(uniqueValidator);

@@ -50,6 +50,16 @@ var BookSchema = new mongoose.Schema({
   buyer: {
     type: String,
     ref: 'user'
+  },
+  isPaid:{
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  isBanned:{
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 

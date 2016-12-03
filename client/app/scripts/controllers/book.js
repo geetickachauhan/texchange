@@ -11,12 +11,15 @@ angular.module('clientApp')
   .controller('BookCtrl', function ($scope, $rootScope, $routeParams, $location, Book, User) {
     $scope.alreadyAdded = false;
     $scope.isUsersBook = false;
+    
     // Get Book data
   	Book.getBook($routeParams.id).then(function(book){
   		$scope.book = book.data;
-      if($rootScope.user.cart.indexOf($scope.book._id) !== -1){
-        $scope.alreadyAdded = true;
-      }  
+      if($rootScope.user){
+        if($rootScope.user.cart.indexOf($scope.book._id) !== -1){
+          $scope.alreadyAdded = true;
+        } 
+      }
       User.get($scope.book.seller).then(function(res){
         $scope.seller_username = res.data.username;
       })

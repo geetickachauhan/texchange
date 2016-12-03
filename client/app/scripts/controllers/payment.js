@@ -8,15 +8,26 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-.controller('PaymentCtrl', function ($scope, $rootScope, $location, Book, User)
-{
+.controller('PaymentCtrl', function ($scope, $rootScope, $location, Book, User){
+
+  if(typeof $rootScope.user === 'undefined' || typeof $rootScope.user === undefined){
+    console.log('Not logged in, redirecting to login');
+    $location.path('/login');
+    return;
+  }
+
 	$scope.cart = $rootScope.user.cart;
 	console.log($scope.cart);
 
+  var ifError = false;
+  $scope.paid = false;
+
+  $scope.continue = function(){
+    $location.path('/');
+  }
 
 	// Pay books in DB
-	$scope.pay = function()
-	{
+	$scope.pay = function(){
 		console.log('payment', $scope.paymentInfo);
 
 
@@ -79,7 +90,7 @@ angular.module('clientApp')
            	  	else
            	  	{
            		  	ifError = true;
-           		  	$scope.showErrorMessage("Expiration date be in the correct format (MM/DD)1", "OK", function(){ });
+           		  	$scope.showErrorMessage("Expiration date be in the correct format (MM/DD)", "OK", function(){ });
 									return;
            		}
            	}
@@ -108,20 +119,23 @@ angular.module('clientApp')
 		{
 			Book.pay($rootScope.user._id, $scope.cart[i]);
 		}
-		/*
-  		$scope.cart.splice(0, $scope.cart.length);
-  		User.updateCart($rootScope.user._id, $scope.cart).then(function(res){
-  			$rootScope.user.cart = res.data.cart;
-  			$location.path('/');
-			$scope.showErrorMessage('Thank you for your purchase! We hope you ejoyed using Texchange!', "Ok", function(){
-				return;
-			});
-  		})*/
-		Book.emptyCart($rootScope.user._id, $scope.cart[i]).then(function(res){
-			console.log(res.data)
-  			$rootScope.user.cart = res.data;
-  			$location.path('/');
-  		})
+
+    $scope.showErrorMessage('Thank you for your purchase! We hope you ejoyed using Texchange!', "Ok", function(){
+          Book.emptyCart($rootScope.user._id).then(function(res){
+              console.log(res.data)
+              $rootScope.user = res.data; 
+              $rootScope.user.status = true
+            })
+          $scope.paid = true;
+    });
+		
+  		// $scope.cart.splice(0, $scope.cart.length);
+  		// User.updateCart($rootScope.user._id, $scope.cart).then(function(res){
+  		// 	$rootScope.user.cart = res.data.cart;
+  		// 	$location.path('/');
+			   
+  		//   })
+		
 
 	}
 

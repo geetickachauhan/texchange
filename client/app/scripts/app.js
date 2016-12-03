@@ -203,6 +203,18 @@
       });
     },
 
+    report: function(userId, newReportCount){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+userId,
+        data: {reportCount: newReportCount}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     rate: function(userId, new_rating){
       return $http({
         method: 'PUT',
@@ -281,6 +293,18 @@
         method: 'PUT',
         url: 'http://localhost:3000/user/'+user._id,
         data: {isBanned: false}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    updateToBanned: function(user){
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/user/'+user._id,
+        data: {isBanned: true}
       }).then(function successCallback(response) {
         return response;
       }, function errorCallback(response) {
@@ -368,7 +392,7 @@
       return $http({
         method: 'PUT',
         url: 'http://localhost:3000/book/'+bookId,
-        data: {buyer: userId}
+        data: {buyer: userId, isPaid: true}
       }).then(function successCallback(response) {
           return response;
       }, function errorCallback(response) {
@@ -455,6 +479,30 @@
       });
     },
 
+    getBooksLike: function(title){
+      return  $http({
+        method: 'GET',
+        url: 'http://localhost:3000/getBooks/?title='+title,
+        data: {}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
+    updateBookBan: function(bookId, newIsBanned){
+      return  $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/book/'+bookId,
+        data: {isBanned: newIsBanned}
+      }).then(function successCallback(response) {
+        return response;
+      }, function errorCallback(response) {
+        return response;
+      });
+    },
+
     addBook: function(bookParams){
       return  $http({
         method: 'POST',
@@ -476,6 +524,30 @@
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/sendAdminMessage/?message='+message.message+'&type='+message.type+'&subject='+message.subject,
+        data: message
+      }).then(function successCallback(response) {
+
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    sendBanMessage: function(message){
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/banUser/?email='+message.email+'&username='+message.username,
+        data: message
+      }).then(function successCallback(response) {
+
+      }, function errorCallback(response) {
+
+      });
+    },
+
+    sendUnbanMessage: function(message){
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/unBanUser/?email='+message.email+'&username='+message.username,
         data: message
       }).then(function successCallback(response) {
 
